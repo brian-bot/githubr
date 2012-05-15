@@ -4,9 +4,9 @@
 #####
 
 setGeneric(
-  name = "",
-  def = function(this, ...){
-    standardGeneric("")
+  name = "getRepo",
+  def = function(uri, owner, repo){
+    standardGeneric("getRepo")
   }
 )
 

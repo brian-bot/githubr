@@ -4,10 +4,15 @@
 #####
 
 setClass(
-  Class = "",
+  Class = "githubRepo",
   
   representation = representation(
-    this = "that")
+    uri = "character",
+    owner = "character",
+    repo = "character")
 )
-
+# setValidity(
+#   "githubRepo",
+#   
+# )
 

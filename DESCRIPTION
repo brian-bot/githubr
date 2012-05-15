@@ -5,6 +5,6 @@ Version: 0.1
 Date: 2012-05-14
 Author: Brian M. Bot
 Maintainer: Brian M. Bot <brian.bot@sagebase.org>
-Imports: methods,tools,RCurl
+Imports: methods,RCurl,RJSONIO
 Description: Making it easier for R to talk to github
 URL: https://github.com/brian-bot/rGithubClient
