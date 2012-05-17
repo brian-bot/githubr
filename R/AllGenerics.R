@@ -10,3 +10,16 @@ setGeneric(
   }
 )
 
+setGeneric(
+  name = ".getRepoInfo",
+  def = function(uri){
+    standardGeneric(".getRepoInfo")
+  }
+)
+
+setGeneric(
+  name = "getRepoFiles",
+  def = function(repo, type, name){
+    standardGeneric("getRepoFiles")
+  }
+)
