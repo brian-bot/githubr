@@ -4,11 +4,14 @@ importFrom(RJSONIO, toJSON, fromJSON)
 
 ## EXPORT METHODS
 exportMethods(
-getRepo
+.getRepoInfo,
+.getRepoRefInfo,
+.getRepoRefTreeInfo,
+.getRepoRefTree,
+.getRepoRefFiles
 )
 
 
 ## EXPORT CLASSES
 exportClasses(
-githubRepo
 )

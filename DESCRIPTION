@@ -7,4 +7,5 @@ Author: Brian M. Bot
 Maintainer: Brian M. Bot <brian.bot@sagebase.org>
 Imports: methods,RCurl,RJSONIO
 Description: Making it easier for R to talk to github
+License: GPL-2
 URL: https://github.com/brian-bot/rGithubClient
