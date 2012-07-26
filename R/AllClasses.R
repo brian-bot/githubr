@@ -9,7 +9,8 @@
 #   representation = representation(
 #     uri = "character",
 #     owner = "character",
-#     repo = "character")
+#     repo = "character",
+#     tree = "list")
 # )
 # setValidity(
 #   "githubRepo",

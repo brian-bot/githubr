@@ -4,16 +4,16 @@
 #####
 
 setGeneric(
-  name = ".getRepoInfo",
-  def = function(uri, owner, repo){
-    standardGeneric(".getRepoInfo")
+  name = "mirrorRepo",
+  def = function(owner, repo, ...){
+    standardGeneric("mirrorRepo")
   }
 )
 
 setGeneric(
-  name = ".getRepoInfoWorker",
+  name = ".getRepoInfo",
   def = function(uri){
-    standardGeneric(".getRepoInfoWorker")
+    standardGeneric(".getRepoInfo")
   }
 )
 
@@ -26,7 +26,7 @@ setGeneric(
 
 setGeneric(
   name = ".getRepoRefInfo",
-  def = function(repo, type, name){
+  def = function(repo, refType, refName){
     standardGeneric(".getRepoRefInfo")
   }
 )
@@ -47,7 +47,7 @@ setGeneric(
 
 setGeneric(
   name = ".getRepoRefFiles",
-  def = function(treeList, repoPath){
+  def = function(treeList, outputPath){
     standardGeneric(".getRepoRefFiles")
   }
 )

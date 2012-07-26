@@ -4,10 +4,10 @@
 setMethod(
   f = ".getRepoRefInfo",
   signature = c("list", "character", "character"),
-  definition = function(repo, type, name){
+  definition = function(repo, refType, refName){
     
     ## GET THE REFERENCE
-    getRefInfo <- getURL(paste(repo$url, "/git/refs/", type, "s/", name, sep=""))
+    getRefInfo <- getURL(paste(repo$url, "/git/refs/", refType, "/", refName, sep=""))
     refInfoList <- fromJSON(getRefInfo)
     
     return(refInfoList)
@@ -16,20 +16,20 @@ setMethod(
 
 
 
-setMethod(
-  f = ".getRepoRefInfo",
-  signature = c("list", "missing", "missing"),
-  definition = function(repo, type, name){
-    .getRepoRefInfo(repo, "head", "master")
-  }
-)
-
-setMethod(
-  f = ".getRepoRefInfo",
-  signature = c("list", "character", "missing"),
-  definition = function(repo, type, name){
-    .getRepoRefInfo(repo, type, "master")
-  }
-)
+# setMethod(
+#   f = ".getRepoRefInfo",
+#   signature = c("list", "missing", "missing"),
+#   definition = function(repo, type, name){
+#     .getRepoRefInfo(repo, "heads", "master")
+#   }
+# )
+# 
+# setMethod(
+#   f = ".getRepoRefInfo",
+#   signature = c("list", "character", "missing"),
+#   definition = function(repo, type, name){
+#     .getRepoRefInfo(repo, type, "master")
+#   }
+# )
 
 
