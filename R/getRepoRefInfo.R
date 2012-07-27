@@ -9,6 +9,11 @@ setMethod(
     ## GET THE REFERENCE
     getRefInfo <- getURL(paste(repo$url, "/git/refs/", refType, "/", refName, sep=""))
     refInfoList <- fromJSON(getRefInfo)
+    ## IF A TAG, THEN NEED TO TAKE ONE MORE STEP
+    if(refType == "tags"){
+      getRefInfo2 <- getURL(refInfoList$object[["url"]])
+      refInfoList <- fromJSON(getRefInfo2)
+    }
     
     return(refInfoList)
   }
