@@ -26,14 +26,18 @@ setMethod(
     
     uri <- paste("/repos/", owner, "/", repo, sep="")
     
-    ## STEP THROUGH DETERMINING FILES IN REPO TREE
-    repoInfo <- .getRepoInfo(uri)
-    repoRefInfo <- .getRepoRefInfo(repo=repoInfo, refType=refType, refName=refName)
-    repoRefTreeInfo <- .getRepoRefTreeInfo(repoRefInfo)
-    repoRefTree <- .getRepoRefTree(repoRefTreeInfo)
-    repoRefFiles <- .getRepoRefFiles(repoRefTree, outputPath=outputPath)
+    commit <- .getCommit(uri, refType, refName)
+    commitTree <- .getCommitTree(commit)
+    commitFiles <- .getCommitFiles(commitTree, outputPath)
     
-    return(repoRefFiles)
+#     ## STEP THROUGH DETERMINING FILES IN REPO TREE
+#     repoInfo <- .getRepoInfo(uri)
+#     repoRefInfo <- .getRepoRefInfo(repo=repoInfo, refType=refType, refName=refName)
+#     repoRefTreeInfo <- .getRepoRefTreeInfo(repoRefInfo)
+#     repoRefTree <- .getRepoRefTree(repoRefTreeInfo)
+#     repoRefFiles <- .getRepoRefFiles(repoRefTree, outputPath=outputPath)
+    
+    return(commitFiles)
   }
 )
 

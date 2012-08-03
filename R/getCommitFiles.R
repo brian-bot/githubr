@@ -2,7 +2,7 @@
 #####
 
 setMethod(
-  f = ".getRepoRefFiles",
+  f = ".getCommitFiles",
   signature = c("list", "character"),
   definition = function(treeList, outputPath){
     

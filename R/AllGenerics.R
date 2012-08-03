@@ -11,44 +11,30 @@ setGeneric(
 )
 
 setGeneric(
-  name = ".getRepoInfo",
-  def = function(uri){
-    standardGeneric(".getRepoInfo")
+  name = ".getGitURL",
+  def = function(url, ...){
+    standardGeneric(".getGitURL")
   }
 )
 
 setGeneric(
-  name = ".getRepoRef",
-  def = function(refInfoList){
-    standardGeneric(".getRepoRef")
+  name = ".getCommit",
+  def = function(uri, refType, refName){
+    standardGeneric(".getCommit")
   }
 )
 
 setGeneric(
-  name = ".getRepoRefInfo",
-  def = function(repo, refType, refName){
-    standardGeneric(".getRepoRefInfo")
+  name = ".getCommitTree",
+  def = function(commit){
+    standardGeneric(".getCommitTree")
   }
 )
 
 setGeneric(
-  name = ".getRepoRefTreeInfo",
-  def = function(refInfoList){
-    standardGeneric(".getRepoRefTreeInfo")
-  }
-)
-
-setGeneric(
-  name = ".getRepoRefTree",
-  def = function(refTree){
-    standardGeneric(".getRepoRefTree")
-  }
-)
-
-setGeneric(
-  name = ".getRepoRefFiles",
+  name = ".getCommitFiles",
   def = function(treeList, outputPath){
-    standardGeneric(".getRepoRefFiles")
+    standardGeneric(".getCommitFiles")
   }
 )
 
