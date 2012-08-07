@@ -11,7 +11,7 @@ setMethod(
     tryGetURL <- fromJSON(tryGetURL)
     if(is.character(tryGetURL)){
       if(tryGetURL["message"] == "Not Found")
-        stop("github api could not find specified repository and/or specific reference")
+        stop("github api could not find specified repository and/or reference", call.=F)
     }
     
     return(tryGetURL)

@@ -4,10 +4,10 @@ importFrom(RJSONIO, toJSON, fromJSON)
 
 ## EXPORT METHODS
 exportMethods(
-.getGitURL,
-.getCommit,
-.getCommitTree,
-.getCommitFiles,
+#.getGitURL,
+#.getCommit,
+#.getCommitTree,
+#.getCommitFiles,
 mirrorRepo
 )
 
