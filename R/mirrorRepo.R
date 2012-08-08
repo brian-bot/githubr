@@ -29,6 +29,7 @@ setMethod(
     commit <- .getCommit(uri, refType, refName)
     commitTree <- .getCommitTree(commit)
     commitFiles <- .getCommitFiles(commitTree, outputPath)
+    cat("status: mirrorRepo done!\n")
     
 #     ## STEP THROUGH DETERMINING FILES IN REPO TREE
 #     repoInfo <- .getRepoInfo(uri)

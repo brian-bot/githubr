@@ -6,6 +6,7 @@ setMethod(
   signature = c("list", "character"),
   definition = function(treeList, outputPath){
     
+    cat("status: getting the file tree\n")
     theseFiles <- lapply(treeList$tree, function(x){
       tmpText <- getURL(x[["url"]], httpheader = c(Accept="application/vnd.github.raw"))
       tmpDir <- dirname(x[["path"]])
