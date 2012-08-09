@@ -25,13 +25,6 @@ setGeneric(
 )
 
 setGeneric(
-  name = ".getCommit",
-  def = function(myRepo){
-    standardGeneric(".getCommit")
-  }
-)
-
-setGeneric(
   name = ".getCommitTree",
   def = function(myRepo){
     standardGeneric(".getCommitTree")
