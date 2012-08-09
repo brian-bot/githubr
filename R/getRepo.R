@@ -2,18 +2,21 @@
 #####
 
 setMethod(
-  f = "mirrorRepo",
-  signature = c("character", "character"),
-  definition = function(owner, repo, ...){
+  f = "getRepo",
+  signature = c("character"),
+  definition = function(repository, ...){
     argList <- list(...)
     
-    ## CREATE A DEFAULT githubRepo CLASS TO POPULATE
-    myDir <- tempfile()
-    dir.create(myDir)
-    myRepo <- new("githubRepo", owner=owner, repo=repo, localPath=myDir)
+    repoSplit <- unlist(strsplit(repository, "/", fixed=T))
+    repoSplit <- repoSplit[repoSplit != ""]
+    if( length(repoSplit) != 2 ){
+      stop(paste("repository ", repository, " must contain an owner and a repo name (e.g. /owner/repoName)\n", sep=""))
+    }
+    
+    myRepo <- new("githubRepo", owner=repoSplit[1], repo=repoSplit[2])
     
     ## SPECIFY VALIDITY OF ARGUMENTS PASSED
-    validArgs <- c("refType", "refName", "commit", "outputPath")
+    validArgs <- c("refType", "refName", "outputPath")
     
     if(any(!(names(argList) %in% validArgs)))
       stop(sprintf("Valid optional arguments are: %s", paste(validArgs, collapse=", ")))
@@ -26,7 +29,6 @@ setMethod(
     
     myRepo <- .getCommit(myRepo)
     myRepo <- .getCommitTree(myRepo)
-    cat("status: mirrorRepo done!\n")
     
     return(myRepo)
   }

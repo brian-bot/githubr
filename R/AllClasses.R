@@ -12,10 +12,12 @@ setClass(
     refType = "character",
     refName = "character",
     commit = "character",
-    localPath = "character",
+    outputPath = "character",
     tree = "list"),
+  
   prototype = prototype(
     refType = "heads",
-    refName = "master")
+    refName = "master",
+    outputPath = "NA")
 )
 

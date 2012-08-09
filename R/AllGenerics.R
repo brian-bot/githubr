@@ -4,9 +4,16 @@
 #####
 
 setGeneric(
-  name = "mirrorRepo",
-  def = function(owner, repo, ...){
-    standardGeneric("mirrorRepo")
+  name = "getRepo",
+  def = function(repository, ...){
+    standardGeneric("getRepo")
+  }
+)
+
+setGeneric(
+  name = "downloadRepo",
+  def = function(repository, ...){
+    standardGeneric("downloadRepo")
   }
 )
 
