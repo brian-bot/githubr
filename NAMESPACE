@@ -14,4 +14,5 @@ mirrorRepo
 
 ## EXPORT CLASSES
 exportClasses(
+githubRepo
 )

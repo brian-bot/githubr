@@ -19,22 +19,15 @@ setGeneric(
 
 setGeneric(
   name = ".getCommit",
-  def = function(uri, refType, refName){
+  def = function(myRepo){
     standardGeneric(".getCommit")
   }
 )
 
 setGeneric(
   name = ".getCommitTree",
-  def = function(commit){
+  def = function(myRepo){
     standardGeneric(".getCommitTree")
-  }
-)
-
-setGeneric(
-  name = ".getCommitFiles",
-  def = function(treeList, outputPath){
-    standardGeneric(".getCommitFiles")
   }
 )
 

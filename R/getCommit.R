@@ -3,18 +3,19 @@
 
 setMethod(
   f = ".getCommit",
-  signature = c("character", "character", "character"),
-  definition = function(uri, refType, refName){
+  signature = c("githubRepo"),
+  definition = function(myRepo){
     
+    constructedURI <- paste("/", myRepo@owner, "/", myRepo@repo, "/git/refs/", myRepo@refType, "/", myRepo@refName, sep="")
     ## GET THE REFERENCE
-    cat(paste("status: getting meta information about: ", uri, "/git/refs/", refType, "/", refName, "\n", sep=""))
-    refList <- .getGitURL(paste("https://api.github.com", uri, "/git/refs/", refType, "/", refName, sep=""))
-    if(refType=="tags"){
+    cat(paste("status: getting meta information about: ", constructedURI, "\n", sep=""))
+    refList <- .getGitURL(paste("https://api.github.com/repos", constructedURI, sep=""))
+    if(myRepo@refType=="tags"){
       commitList <- .getGitURL(refList$object[["url"]])
     } else{
       commitList <- refList
     }
-    
-    return(commitList$object)
+    myRepo@commit <- c(commitList$object["sha"])
+    return(myRepo)
   }
 )
