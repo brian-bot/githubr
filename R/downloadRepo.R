@@ -6,7 +6,13 @@ setMethod(
   f = "downloadRepo",
   signature = c("character"),
   definition = function(repository, ...){
-    downloadRepo(getRepo(repository, ...))
+    argList <- list(...)
+    if(any(names(argList) == "outputPath")){
+      outputPath <- argList[["outputPath"]]
+      return(downloadRepo(getRepo(repository, ...), outputPath=outputPath))
+    } else{
+      return(downloadRepo(getRepo(repository, ...)))
+    }
   }
 )
 
@@ -20,7 +26,7 @@ setMethod(
     
       ## SPECIFY VALIDITY OF ARGUMENTS PASSED
     if(any(names(argList) != "outputPath"))
-      stop("outputPath is only valid optional argument\n")
+      stop("invalid optional argument\n")
     if(any(names(argList) == "outputPath"))
       myRepo@outputPath <- argList[["outputPath"]]
     if(myRepo@outputPath == "NA"){

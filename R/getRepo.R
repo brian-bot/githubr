@@ -16,6 +16,7 @@ setMethod(
     myRepo <- new("githubRepo", owner=repoSplit[1], repo=repoSplit[2])
     
     ## SPECIFY VALIDITY OF ARGUMENTS PASSED
+    ## IGNORE outputPath IF PASSED TO THIS FUNCTION -- BUT DO NOT THROW ERROR (LEAVE IN validArgs)
     validArgs <- c("type", "typeName", "outputPath")
     validTypes <- c("tag", "branch", "commit")
     
@@ -36,9 +37,10 @@ setMethod(
     if( !any(argList[["type"]] == validTypes) )
       stop(sprintf("Valid types are: %s", paste(validTypes, collapse=", ")))
     
-    ## CHECK IF outputPath HAS BEEN PASSED
-    if( any(names(argList) == "outputPath") )
-      myRepo@output <- argList[["outputPath"]]
+    ## IGNORE outputPath IF PASSED TO THIS FUNCTION -- BUT DO NOT THROW ERROR (LEAVE IN validArgs)
+#     ## CHECK IF outputPath HAS BEEN PASSED
+#     if( any(names(argList) == "outputPath") )
+#       myRepo@output <- argList[["outputPath"]]
     
     ## DEPENDING ON type, DISPATCH GET TO COMMIT DIFFERENT WAYS
     if( argList[["type"]] == "commit" ){
