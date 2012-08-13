@@ -2,7 +2,7 @@ Package: rGithubClient
 Type: Package
 Title: R-Github Client
 Version: 0.1
-Date: 2012-05-14
+Date: 2012-08-13
 Author: Brian M. Bot
 Maintainer: Brian M. Bot <brian.bot@sagebase.org>
 Imports: methods,RCurl,RJSONIO
