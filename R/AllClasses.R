@@ -11,15 +11,15 @@ setClass(
     repo = "character",
     commit = "character",
     tree = "list",
-    outputPath = "character"),
+    localPath = "character"),
     
   prototype = prototype(
-    outputPath = "NA")
+    localPath = "NA")
 )
 setValidity(
   "githubRepo",
   function(object){
-    for(this in c("user", "repo", "commit", "outputPath")){
+    for(this in c("user", "repo", "commit", "localPath")){
       if( length(slot(object, this)) > 1L ){
         return(paste(this, " may only contain a single character value\n", sep=""))
       }
@@ -44,7 +44,7 @@ setMethod(
     cat('  tree (list) contains ', length(slot(object, "tree")$treeFiles), ' files\n', sep="")
     cat('    - tree$treeFiles contains file name paths relative to repository\n')
     cat('    - tree$treeUrls contains url to commit-specific locations within github\n')
-    cat('  outputPath = ', slot(object, "outputPath"), '\n', sep="")
+    cat('  localPath = ', slot(object, "localPath"), '\n', sep="")
   }
 )
 

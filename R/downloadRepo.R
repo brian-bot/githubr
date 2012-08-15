@@ -7,9 +7,9 @@ setMethod(
   signature = c("character"),
   definition = function(repository, ...){
     argList <- list(...)
-    if(any(names(argList) == "outputPath")){
-      outputPath <- argList[["outputPath"]]
-      return(downloadRepo(getRepo(repository, ...), outputPath=outputPath))
+    if(any(names(argList) == "localPath")){
+      localPath <- argList[["localPath"]]
+      return(downloadRepo(getRepo(repository, ...), localPath=localPath))
     } else{
       return(downloadRepo(getRepo(repository, ...)))
     }
@@ -25,19 +25,19 @@ setMethod(
     myRepo <- repository
     
       ## SPECIFY VALIDITY OF ARGUMENTS PASSED
-    if(any(names(argList) != "outputPath"))
+    if(any(names(argList) != "localPath"))
       stop("invalid optional argument\n")
-    if(any(names(argList) == "outputPath"))
-      myRepo@outputPath <- path.expand(argList[["outputPath"]])
-    if(myRepo@outputPath == "NA"){
+    if(any(names(argList) == "localPath"))
+      myRepo@localPath <- path.expand(argList[["localPath"]])
+    if(myRepo@localPath == "NA"){
       tmpDir <- tempfile(pattern="dir")
       dir.create(tmpDir)
-      myRepo@outputPath <- tmpDir
+      myRepo@localPath <- tmpDir
     }
     
-    cat(paste("status: downloading file tree to ", myRepo@outputPath, "\n", sep=""))
+    cat(paste("status: downloading file tree to ", myRepo@localPath, "\n", sep=""))
     for(i in 1:length(myRepo@tree$treeUrls)){
-      fullFile <- file.path(myRepo@outputPath, myRepo@tree$treeFiles[i])
+      fullFile <- file.path(myRepo@localPath, myRepo@tree$treeFiles[i])
       basedir <- dirname(fullFile)
       if( !file.exists(basedir) ){
         dir.create(basedir, recursive=TRUE)
