@@ -28,7 +28,7 @@ setMethod(
     if(any(names(argList) != "outputPath"))
       stop("invalid optional argument\n")
     if(any(names(argList) == "outputPath"))
-      myRepo@outputPath <- argList[["outputPath"]]
+      myRepo@outputPath <- path.expand(argList[["outputPath"]])
     if(myRepo@outputPath == "NA"){
       tmpDir <- tempfile(pattern="dir")
       dir.create(tmpDir)

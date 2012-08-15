@@ -8,7 +8,7 @@ setMethod(
     
     ## GET THE TREE INFORMATION
     cat(paste("status: getting meta information about commit: ", myRepo@commit, "\n", sep=""))
-    constructedURL <- paste("https://api.github.com/repos/", myRepo@owner, "/", myRepo@repo, "/git/commits/", myRepo@commit, sep="")
+    constructedURL <- paste("https://api.github.com/repos/", myRepo@user, "/", myRepo@repo, "/git/commits/", myRepo@commit, sep="")
     commitTreeList <- .getGitURL(constructedURL)
     ## GET THE TREE
     cat("status: getting information about the commit tree\n")

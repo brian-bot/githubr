@@ -10,10 +10,10 @@ setMethod(
     repoSplit <- unlist(strsplit(repository, "/", fixed=T))
     repoSplit <- repoSplit[repoSplit != ""]
     if( length(repoSplit) != 2 ){
-      stop(paste("repository ", repository, " must contain an owner and a repo name (e.g. /owner/repoName)\n", sep=""))
+      stop(paste("repository ", repository, " must contain an user and a repo name (e.g. /user/repoName)\n", sep=""))
     }
     
-    myRepo <- new("githubRepo", owner=repoSplit[1], repo=repoSplit[2])
+    myRepo <- new("githubRepo", user=repoSplit[1], repo=repoSplit[2])
     
     ## SPECIFY VALIDITY OF ARGUMENTS PASSED
     ## IGNORE outputPath IF PASSED TO THIS FUNCTION -- BUT DO NOT THROW ERROR (LEAVE IN validArgs)
@@ -47,14 +47,14 @@ setMethod(
       myRepo@commit <- argList[["typeName"]]
     } else{
       if( argList[["type"]] == "branch" ){
-        constructedURI <- paste("/", myRepo@owner, "/", myRepo@repo, "/git/refs/heads/", argList[["typeName"]], sep="")
+        constructedURI <- paste("/", myRepo@user, "/", myRepo@repo, "/git/refs/heads/", argList[["typeName"]], sep="")
         ## GET THE COMMIT
         cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
         commitList <- .getGitURL(paste("https://api.github.com/repos", constructedURI, sep=""))
         myRepo@commit <- commitList$object["sha"]
       } else{
         if( argList[["type"]] == "tag" ){
-          constructedURI <- paste("/", myRepo@owner, "/", myRepo@repo, "/git/refs/tags/", argList[["typeName"]], sep="")
+          constructedURI <- paste("/", myRepo@user, "/", myRepo@repo, "/git/refs/tags/", argList[["typeName"]], sep="")
           ## GET THE COMMIT
           cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
           refList <- .getGitURL(paste("https://api.github.com/repos", constructedURI, sep=""))
