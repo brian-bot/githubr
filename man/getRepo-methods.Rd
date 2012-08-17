@@ -12,16 +12,19 @@
 
 \section{Methods}{
   \describe{
-    \item{\code{signature(repository = "character", ...)}}{}
-    \item{\code{repository}}{
-      name of repository, in the form of /owner/repo
-    }
-    \item{\code{...}}{}
-    \item{\code{type} = "branch"}{
-      one of "branch", "tag", or "commit" -- typeName must be specified along with type
-    }
-    \item{\code{typeName} = "master"}{
-      specified along with \code{type}: name of the branch, tag, or the sha of the requested commit
+    \item{\code{signature(repository = "character", ...)}}{
+      \describe{
+        \item{\code{repository}}{
+          name of repository, in the form of /owner/repo
+        }
+        \item{\code{...}}{}
+        \item{\code{type} = "branch"}{
+          one of "branch", "tag", or "commit" -- typeName must be specified along with type
+        }
+        \item{\code{typeName} = "master"}{
+          specified along with \code{type}: name of the branch, tag, or the sha of the requested commit
+        }
+      }
     }
   }
 }
