@@ -37,7 +37,7 @@ setMethod(
   definition = function(object){
     cat('An object of class githubRepo\n')
     cat('-----------------------------\n')
-    cat('  user  = ', slot(object, "user"), '\n', sep="")
+    cat('  user   = ', slot(object, "user"), '\n', sep="")
     cat('  repo   = ', slot(object, "repo"), '\n', sep="")
     cat('  commit = ', slot(object, "commit"), '\n', sep="")
     cat('-----------------------------\n')
