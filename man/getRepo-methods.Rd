@@ -44,4 +44,8 @@
   return value is of class \code{githubRepo}
 }
 
+\seealso{
+  \code{\link{downloadRepo-methods}}, \code{\link{githubRepo-class}}
+}
+
 \keyword{methods}

@@ -44,4 +44,9 @@
 \section{Value}{
   return value is of class \code{githubRepo}
 }
+
+\seealso{
+  \code{\link{getRepo-methods}}, \code{\link{githubRepo-class}}
+}
+
 \keyword{methods}
