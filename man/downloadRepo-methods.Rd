@@ -19,7 +19,7 @@
           object of class \code{githubRepo}, usually created by a call to \code{getRepo}
         }
         \item{\code{...}}{}
-        \item{\code{outputPath}}{
+        \item{\code{localPath}}{
           local path for repository file tree to be downloaded to -- defaults to a temporary directory
         }
       }      
@@ -33,7 +33,7 @@
         \item{\code{type, typeName}}{
           optional arguments passed along to \code{getRepo} if class of repository is character and of the form "/owner/repo""
         }
-        \item{\code{outputPath}}{
+        \item{\code{localPath}}{
           local path for repository file tree to be downloaded to -- defaults to a temporary directory
         }
       }
