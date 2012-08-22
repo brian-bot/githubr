@@ -25,24 +25,27 @@ setMethod(
     myRepo <- repository
     
       ## SPECIFY VALIDITY OF ARGUMENTS PASSED
-    if(any(names(argList) != "localPath"))
+    if( any(names(argList) != "localPath") ){
       stop("invalid optional argument\n")
-    if(any(names(argList) == "localPath"))
+    }
+    if( any(names(argList) == "localPath") ){
       myRepo@localPath <- path.expand(argList[["localPath"]])
-    if(myRepo@localPath == "NA"){
+    }
+    if( myRepo@localPath == "NA" ){
       tmpDir <- tempfile(pattern="dir")
       dir.create(tmpDir)
       myRepo@localPath <- tmpDir
     }
     
     cat(paste("status: downloading file tree to ", myRepo@localPath, "\n", sep=""))
-    for(i in 1:length(myRepo@tree$treeUrls)){
+    urls <- paste("https://api.github.com/repos", myRepo@user, myRepo@repo, "git/blobs", myRepo@tree$treeShas, sep="/")
+    for(i in 1:length(urls)){
       fullFile <- file.path(myRepo@localPath, myRepo@tree$treeFiles[i])
       basedir <- dirname(fullFile)
       if( !file.exists(basedir) ){
         dir.create(basedir, recursive=TRUE)
       }
-      tmpText <- getURL(myRepo@tree$treeUrls[i], httpheader = c(Accept="application/vnd.github.raw"))
+      tmpText <- getURL(urls[i], httpheader = c(Accept="application/vnd.github.raw"))
       cat(tmpText, file=fullFile)
     }
     

@@ -20,27 +20,26 @@ setMethod(
     validArgs <- c("type", "typeName", "localPath")
     validTypes <- c("tag", "branch", "commit")
     
-    if( any(!(names(argList) %in% validArgs)) )
+    if( any(!(names(argList) %in% validArgs)) ){
       stop(sprintf("Valid optional arguments are: %s", paste(validArgs, collapse=", ")))
+    }
     
-    ## CHECK type AND typeName
-    if( any(names(argList) == "typeName") & (!any(names(argList) == "type")) )
+    ## CHECK type AND typeName -- AND SET DEFAULT IF NECESSARY
+    if( any(names(argList) == "typeName") & (!any(names(argList) == "type")) ){
       stop("must specify type along with typeName")
-    if( (!any(names(argList) == "typeName")) & any(names(argList) == "type") )
+    }
+    if( (!any(names(argList) == "typeName")) & any(names(argList) == "type") ){
       stop("must specify typeName along with type")
+    }
     if( (!any(names(argList) == "typeName")) & (!any(names(argList) == "type")) ){
       argList[["type"]] <- "branch"
       argList[["typeName"]] <- "master"
     }
     
     ## CHECK IF type IS VALID
-    if( !any(argList[["type"]] == validTypes) )
+    if( !any(argList[["type"]] == validTypes) ){
       stop(sprintf("Valid types are: %s", paste(validTypes, collapse=", ")))
-    
-    ## IGNORE localPath IF PASSED TO THIS FUNCTION -- BUT DO NOT THROW ERROR (LEAVE IN validArgs)
-#     ## CHECK IF localPath HAS BEEN PASSED
-#     if( any(names(argList) == "localPath") )
-#       myRepo@output <- argList[["localPath"]]
+    }
     
     ## DEPENDING ON type, DISPATCH GET TO COMMIT DIFFERENT WAYS
     if( argList[["type"]] == "commit" ){

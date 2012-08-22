@@ -17,9 +17,9 @@ setMethod(
     ## COLLECT INFORMATION ABOUT THE COMMIT TREE FOR STORING WITHIN githubRepo CLASS
     theseFiles <- unlist(sapply(treeList$tree, function(x){if(x[["type"]] != "tree") x[["path"]]}))
     theseFiles <- theseFiles[!is.null(theseFiles)]
-    theseUrls <- unlist(sapply(treeList$tree, function(x){if(x[["type"]] != "tree") x[["url"]]}))
-    theseUrls <- theseUrls[!is.null(theseUrls)]
-    myRepo@tree <- list(treeFiles=theseFiles, treeUrls=theseUrls)
+    theseShas <- unlist(sapply(treeList$tree, function(x){if(x[["type"]] != "tree") x[["sha"]]}))
+    theseShas <- theseShas[!is.null(theseShas)]
+    myRepo@tree <- list(treeFiles=theseFiles, treeShas=theseShas)
     
     return(myRepo)
   }
