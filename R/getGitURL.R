@@ -3,7 +3,7 @@
 
 
 setMethod(
-  f = ".getGitURL",
+  f = ".getURLjson",
   signature = c("character"),
   definition = function(url, ...){
     

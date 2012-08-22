@@ -50,15 +50,15 @@ setMethod(
         constructedURI <- paste("/", myRepo@user, "/", myRepo@repo, "/git/refs/heads/", argList[["typeName"]], sep="")
         ## GET THE COMMIT
         cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
-        commitList <- .getGitURL(paste("https://api.github.com/repos", constructedURI, sep=""))
+        commitList <- .getURLjson(paste("https://api.github.com/repos", constructedURI, sep=""))
         myRepo@commit <- commitList$object["sha"]
       } else{
         if( argList[["type"]] == "tag" ){
           constructedURI <- paste("/", myRepo@user, "/", myRepo@repo, "/git/refs/tags/", argList[["typeName"]], sep="")
           ## GET THE COMMIT
           cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
-          refList <- .getGitURL(paste("https://api.github.com/repos", constructedURI, sep=""))
-          commitList <- .getGitURL(refList$object[["url"]])
+          refList <- .getURLjson(paste("https://api.github.com/repos", constructedURI, sep=""))
+          commitList <- .getURLjson(refList$object[["url"]])
           myRepo@commit <- commitList$object["sha"]
         }
       }
