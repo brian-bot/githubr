@@ -10,7 +10,7 @@ setClass(
     user = "character",
     repo = "character",
     commit = "character",
-    tree = "list",
+    tree = "data.frame",
     localPath = "character"),
     
   prototype = prototype(
@@ -41,9 +41,7 @@ setMethod(
     cat('  repo   = ', slot(object, "repo"), '\n', sep="")
     cat('  commit = ', slot(object, "commit"), '\n', sep="")
     cat('-----------------------------\n')
-    cat('  tree (list) contains ', length(slot(object, "tree")$treeFiles), ' files\n', sep="")
-    cat('    - tree$treeFiles contains file name paths relative to repository\n')
-    cat('    - tree$treeUrls contains url to commit-specific locations within github\n')
+    cat('  tree contains ', nrow(object@tree), ' files\n', sep="")
     cat('  localPath = ', slot(object, "localPath"), '\n', sep="")
   }
 )

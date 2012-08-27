@@ -14,12 +14,15 @@ setMethod(
     cat("status: getting information about the commit tree\n")
     treeList <- .getURLjson(paste(commitTreeList$tree["url"], "?recursive=1", sep=""))
     
-    ## COLLECT INFORMATION ABOUT THE COMMIT TREE FOR STORING WITHIN githubRepo CLASS
-    theseFiles <- unlist(sapply(treeList$tree, function(x){if(x[["type"]] != "tree") x[["path"]]}))
-    theseFiles <- theseFiles[!is.null(theseFiles)]
-    theseShas <- unlist(sapply(treeList$tree, function(x){if(x[["type"]] != "tree") x[["sha"]]}))
-    theseShas <- theseShas[!is.null(theseShas)]
-    myRepo@tree <- list(treeFiles=theseFiles, treeShas=theseShas)
+    thisTree <- data.frame(type  = sapply(treeList$tree, function(x){x[["type"]]}),
+                           path = sapply(treeList$tree, function(x){x[["path"]]}),
+                           sha  = sapply(treeList$tree, function(x){x[["sha"]]}),
+                           mode  = sapply(treeList$tree, function(x){x[["mode"]]}),
+                           stringsAsFactors=FALSE)
+    thisTree <- thisTree[thisTree$type != "tree", ]
+    thisTree$type <- NULL
+    
+    myRepo@tree <- thisTree
     
     return(myRepo)
   }
