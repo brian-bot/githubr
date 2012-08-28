@@ -18,6 +18,13 @@ setGeneric(
 )
 
 setGeneric(
+  name = "installRepo",
+  def = function(repository, ...){
+    standardGeneric("installRepo")
+  }
+)
+
+setGeneric(
   name = ".getURLjson",
   def = function(url, ...){
     standardGeneric(".getURLjson")
