@@ -57,8 +57,12 @@ setMethod(
           ## GET THE COMMIT
           cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
           refList <- .getURLjson(paste("https://api.github.com/repos", constructedURI, sep=""))
-          commitList <- .getURLjson(refList$object[["url"]])
-          myRepo@commit <- commitList$object["sha"]
+          if( refList$object["type"] == "commit" ){
+            myRepo@commit <- refList$object["sha"]
+          } else{
+            commitList <- .getURLjson(refList$object[["url"]])
+            myRepo@commit <- commitList$object["sha"]
+          }
         }
       }
     }
