@@ -38,15 +38,32 @@ setMethod(
     }
     
     cat(paste("status: downloading file tree to ", myRepo@localPath, "\n", sep=""))
-    urls <- paste("https://api.github.com/repos", myRepo@user, myRepo@repo, "git/blobs", myRepo@tree$sha, sep="/")
-    for(i in 1:length(urls)){
-      fullFile <- file.path(myRepo@localPath, myRepo@tree$file[i])
+    allUrls <- paste("https://api.github.com/repos", myRepo@user, myRepo@repo, "git/blobs", myRepo@tree$sha, sep="/")
+    
+    ## DOWNLOAD FILES ONE AT A TIME
+    for(i in 1:length(allUrls)){
+      fullFile <- file.path(myRepo@localPath, myRepo@tree$path[i])
       basedir <- dirname(fullFile)
       if( !file.exists(basedir) ){
         dir.create(basedir, recursive=TRUE)
       }
-      tmpText <- getURL(urls[i], httpheader = c(Accept="application/vnd.github.raw"))
-      cat(tmpText, file=fullFile)
+      
+      tmpFile <- tempfile()
+      tryCatch(
+        .curlWriterDownload(url=allUrls[i], destfile=tmpFile, opts = .getCache("curlOpts"), curlHandle = getCurlHandle()),
+        error = function(ex){
+          file.remove(tmpFile)
+          stop(ex)
+        }
+      )
+      
+      ## copy then delete. this avoids a cross-device error encountered
+      ## on systems with multiple hard drives when using file.rename
+      if(!file.copy(tmpFile, fullFile, overwrite = TRUE)){
+        file.remove(tmpFile)
+        stop("COULD NOT COPY: ", tmpFile, " TO: ", destfile)
+      }
+      file.remove(tmpFile)
     }
     
     return(myRepo)
