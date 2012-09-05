@@ -1,0 +1,7 @@
+.Rbuildignore
+rGithubClient.Rproj
+.Rproj.user
+.Rhistory
+.RData
+demo
+src-*
