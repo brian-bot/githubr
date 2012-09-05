@@ -39,35 +39,33 @@ setMethod(
     
     cat(paste("status: downloading file tree to ", myRepo@localPath, "\n", sep=""))
     allUrls <- paste("https://api.github.com/repos", myRepo@user, myRepo@repo, "git/blobs", myRepo@tree$sha, sep="/")
+    fullFiles <- file.path(myRepo@localPath, myRepo@tree$path)
+    basedirs <- unique(dirname(fullFiles))
+    createDirs <- basedirs[!file.exists(basedirs)]
+    createDirs <- mapply(dir.create, createDirs, MoreArgs=list(recursive=T))
     
-    ## DOWNLOAD FILES ONE AT A TIME
-    for(i in 1:length(allUrls)){
-      fullFile <- file.path(myRepo@localPath, myRepo@tree$path[i])
-      basedir <- dirname(fullFile)
-      if( !file.exists(basedir) ){
-        dir.create(basedir, recursive=TRUE)
-      }
-      
-      tmpFile <- tempfile()
-      tryCatch(
-        .curlWriterDownload(url=allUrls[i], destfile=tmpFile, opts = .getCache("curlOpts"), curlHandle = getCurlHandle()),
-        error = function(ex){
-          file.remove(tmpFile)
-          stop(ex)
-        }
-      )
-      
-      ## copy then delete. this avoids a cross-device error encountered
-      ## on systems with multiple hard drives when using file.rename
-      if(!file.copy(tmpFile, fullFile, overwrite = TRUE)){
-        file.remove(tmpFile)
-        stop("COULD NOT COPY: ", tmpFile, " TO: ", destfile)
-      }
-      file.remove(tmpFile)
-    }
+    ## DOWNLOAD FILES
+    getThese <- mapply(.downloadURLtoFile, allUrls, fullFiles)
     
     return(myRepo)
   }
 )
 
-
+.downloadURLtoFile <- function(url, file){
+  tmpFile <- tempfile()
+  tryCatch(
+    .curlWriterDownload(url=url, destfile=tmpFile, opts = .getCache("curlOpts"), curlHandle = getCurlHandle()),
+    error = function(ex){
+      file.remove(tmpFile)
+      stop(ex)
+    }
+  )
+  
+  ## copy then delete. this avoids a cross-device error encountered
+  ## on systems with multiple hard drives when using file.rename
+  if(!file.copy(tmpFile, file, overwrite = TRUE)){
+    file.remove(tmpFile)
+    stop("COULD NOT COPY: ", tmpFile, " TO: ", file)
+  }
+  file.remove(tmpFile)
+}
