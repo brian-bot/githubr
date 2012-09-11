@@ -25,7 +25,7 @@
           character string specifying the repository to passed to \code{getRepo} to generate object of class \code{githubRepo}
         }
         \item{\code{...}}{}
-        \item{\code{type, typeName}}{
+        \item{\code{ref, refName}}{
           optional arguments passed along to \code{getRepo} if class of repository is character and of the form "/owner/repo""
         }
         \item{\code{localPath}}{

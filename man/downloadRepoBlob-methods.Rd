@@ -37,7 +37,7 @@
           character vector containing a path (or paths) within \code{repository} of blobs to be downloaded -- defaults to all blobs assiciated with \code{repository} if not specified
         }
         \item{\code{...}}{}
-        \item{\code{type, typeName}}{
+        \item{\code{ref, refName}}{
           optional arguments passed along to \code{getRepo} if class of repository is character and of the form "/owner/repo""
         }
         \item{\code{localPath}}{

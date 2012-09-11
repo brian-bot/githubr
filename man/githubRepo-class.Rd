@@ -18,9 +18,11 @@
   \describe{
     \item{\code{user}:}{Object of class \code{"character"} specifying the user account that the repository is stored in }
     \item{\code{repo}:}{Object of class \code{"character"} specifying the name of the repository }
-    \item{\code{commit}:}{Object of class \code{"character"} specifying the timepoint at which to get information on the repository }
-    \item{\code{tree}:}{Object of class \code{"list"} with elements \code{$treeFiles} and \code{$treeUrls} referring to the tree structure present in the repository }
-    \item{\code{localPath}:}{Object of class \code{"character"} -- only necessary if file tree is downloaded via \code{downloadRepo} -- specifying the local directory in which the files will be downloaded }
+    \item{\code{ref}:}{Object of class \code{"character"} along with \code{refName}: the type of reference that the repository is trying to capture: one of "branch", "tag", or "commit" }
+    \item{\code{refName}:}{Object of class \code{"character"} along with \code{ref}: the name of the branch, tag, or the sha of the requested commit }
+    \item{\code{commit}:}{Object of class \code{"character"} specifying the timepoint at which information on the repository was obtained }
+    \item{\code{tree}:}{Object of class \code{"data.frame"} referring to the tree structure present in the repository with columns \code{path}, \code{sha}, and (optionally) \code{downloadedLocally} }
+    \item{\code{localPath}:}{Object of class \code{"character"} -- only necessary if file tree is downloaded via \code{downloadRepo} or if individual files are downloaded via \code{downloadRepoBlob} -- specifying the local directory in which the files will be downloaded }
   }
 }
 
