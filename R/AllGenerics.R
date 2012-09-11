@@ -32,6 +32,13 @@ setGeneric(
 )
 
 setGeneric(
+  name = "onWeb",
+  def = function(repository, repositoryPath){
+    standardGeneric("onWeb")
+  }
+)
+
+setGeneric(
   name = ".getURLjson",
   def = function(url, ...){
     standardGeneric(".getURLjson")
