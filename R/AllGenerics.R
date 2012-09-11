@@ -18,6 +18,13 @@ setGeneric(
 )
 
 setGeneric(
+  name = "downloadRepoBlob",
+  def = function(repository, repositoryPath, ...){
+    standardGeneric("downloadRepoBlob")
+  }
+)
+
+setGeneric(
   name = "installRepo",
   def = function(repository, ...){
     standardGeneric("installRepo")

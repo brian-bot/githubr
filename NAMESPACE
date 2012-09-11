@@ -10,6 +10,7 @@ useDynLib(rGithubClient)
 exportMethods(
 getRepo,
 downloadRepo,
+downloadRepoBlob,
 installRepo
 )
 

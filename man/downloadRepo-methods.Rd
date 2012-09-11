@@ -20,7 +20,7 @@
         }
         \item{\code{...}}{}
         \item{\code{localPath}}{
-          local path for repository file tree to be downloaded to -- defaults to a temporary directory
+          local path for repository file tree to be downloaded to if not already specified within \code{repository} -- defaults to a temporary directory if not specified
         }
       }      
     }
@@ -34,7 +34,7 @@
           optional arguments passed along to \code{getRepo} if class of repository is character and of the form "/owner/repo""
         }
         \item{\code{localPath}}{
-          local path for repository file tree to be downloaded to -- defaults to a temporary directory
+          local path for repository file tree to be downloaded to if not already specified within \code{repository} -- defaults to a temporary directory if not specified
         }
       }
     }
