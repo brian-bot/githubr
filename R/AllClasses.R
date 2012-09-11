@@ -22,7 +22,7 @@ setClass(
     localPath = "character"),
     
   prototype = prototype(
-    localPath = "NA")
+    localPath = NA_character_)
 )
 setValidity(
   "githubRepo",
@@ -49,8 +49,13 @@ setMethod(
     cat('  repo   = ', slot(object, "repo"), '\n', sep="")
     cat('  commit = ', slot(object, "commit"), '\n', sep="")
     cat('-----------------------------\n')
-    cat('  tree contains ', nrow(object@tree), ' files\n', sep="")
-    cat('  localPath = ', slot(object, "localPath"), '\n', sep="")
+    if( any(names(object@tree)=="downloadedLocally") ){
+      cat('  tree contains ', nrow(object@tree), ' files (', sum(object@tree$downloadedLocally),' downloaded locally)\n', sep="")
+    } else{
+      cat('  tree contains ', nrow(object@tree), ' files\n', sep="")
+    }
+    if( !is.na(slot(object, "localPath")) )
+      cat('  localPath = ', slot(object, "localPath"), '\n', sep="")
   }
 )
 

@@ -30,7 +30,7 @@ setMethod(
     if( any(names(argList) == "localPath") ){
       repository@localPath <- path.expand(argList[["localPath"]])
     }
-    if( repository@localPath == "NA" ){
+    if( is.na(repository@localPath) ){
       tmpDir <- tempfile(pattern="dir")
       dir.create(tmpDir)
       repository@localPath <- tmpDir
