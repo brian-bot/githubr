@@ -41,7 +41,7 @@
 }
 
 \seealso{
-  \code{\link{getRepo-methods}}, \code{\link{downloadRepo-methods}}, \code{\link{githubRepo-class}}
+  \code{\link{getRepo-methods}}, \code{\link{downloadRepoBlob-methods}}, \code{\link{downloadRepo-methods}}, \code{\link{githubRepo-class}}, \code{\link{onWeb-methods}}
 }
 
 \keyword{methods}
