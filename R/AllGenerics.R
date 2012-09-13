@@ -52,3 +52,9 @@ setGeneric(
   }
 )
 
+setGeneric(
+  name = "sourceBlob",
+  def = function(repository, repositoryPath){
+    standardGeneric("sourceBlob")
+  }
+)
