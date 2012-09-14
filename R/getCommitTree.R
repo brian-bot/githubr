@@ -19,6 +19,8 @@ setMethod(
                            sha  = sapply(treeList$tree, function(x){x[["sha"]]}),
                            stringsAsFactors=FALSE)
     thisTree <- thisTree[thisTree$type != "tree", ]
+    ## INITIALIZE THE downloadedLocally VARIABLE - SET TO FALSE UNTIL SOMETHING IS DOWNLOADED
+    thisTree$downloadedLocally <- FALSE
     thisTree$type <- NULL
     
     myRepo@tree <- thisTree
