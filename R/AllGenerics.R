@@ -25,6 +25,13 @@ setGeneric(
 )
 
 setGeneric(
+  name = "sourceBlob",
+  def = function(repository, repositoryPath){
+    standardGeneric("sourceBlob")
+  }
+)
+
+setGeneric(
   name = "installRepo",
   def = function(repository, ...){
     standardGeneric("installRepo")
@@ -32,9 +39,9 @@ setGeneric(
 )
 
 setGeneric(
-  name = "onWeb",
+  name = "view",
   def = function(repository, repositoryPath){
-    standardGeneric("onWeb")
+    standardGeneric("view")
   }
 )
 
@@ -49,12 +56,5 @@ setGeneric(
   name = ".getCommitTree",
   def = function(myRepo){
     standardGeneric(".getCommitTree")
-  }
-)
-
-setGeneric(
-  name = "sourceBlob",
-  def = function(repository, repositoryPath){
-    standardGeneric("sourceBlob")
   }
 )

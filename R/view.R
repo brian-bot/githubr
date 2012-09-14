@@ -2,17 +2,17 @@
 #####
 
 setMethod(
-  f = "onWeb",
+  f = "view",
   signature = signature("githubRepo", "missing"),
   definition = function(repository, repositoryPath){
     
     builtURL <- paste("https://github.com", repository@user, repository@repo, "tree", repository@commit, sep="/")
-    .doOnWeb(builtURL)
+    .doView(builtURL)
   }
 )
 
 setMethod(
-  f = "onWeb",
+  f = "view",
   signature = signature("githubRepo", "character"),
   definition = function(repository, repositoryPath){
     
@@ -21,12 +21,12 @@ setMethod(
     }
     
     builtURL <- paste("https://github.com", repository@user, repository@repo, "blob", repository@commit, repositoryPath, sep="/")
-    .doOnWeb(builtURL)
+    .doView(builtURL)
   }
 )
 
 
-.doOnWeb <- function(url){
+.doView <- function(url){
   tryCatch(
     utils::browseURL(url),
     error = function(e){

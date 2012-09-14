@@ -12,9 +12,9 @@ exportMethods(
 getRepo,
 downloadRepo,
 downloadRepoBlob,
+sourceBlob,
 installRepo,
-onWeb,
-sourceBlob
+view
 )
 
 
