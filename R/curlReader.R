@@ -14,7 +14,7 @@
   .Call("reader_close", ext)
 }
 
-.curlReaderUpload <- function(url, srcfile, header, curlHandle = getCurlHandle(), readFunction=.getCache('curlReader'), opts = .getCache("curlOpts")){
+.curlReaderUpload <- function(url, srcfile, header, curlHandle = getCurlHandle(), readFunction=.getCache('curlReaderGithub'), opts = .getCache("curlOptsGithub")){
   parsedUrl <- .ParsedUrl(url)
   if(tolower(parsedUrl@protocol) == "file"){
     if(file.exists(parsedUrl@path))

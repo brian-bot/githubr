@@ -20,7 +20,7 @@
   .Call("writer_close", ext)
 }
 
-.curlWriterDownload <- function(url, destfile=tempfile(), curlHandle = getCurlHandle(), writeFunction=.getCache('curlWriter'), opts = .getCache("curlOpts")){
+.curlWriterDownload <- function(url, destfile=tempfile(), curlHandle = getCurlHandle(), writeFunction=.getCache('curlWriterGithub'), opts = .getCache("curlOptsGithub")){
   ext <- .curlWriterOpen(destfile)
   on.exit(.curlWriterClose(ext))
   ## SUPPRESS THE CURL PROGRESS FOR EACH FILE
