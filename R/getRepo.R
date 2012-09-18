@@ -14,8 +14,7 @@ setMethod(
     }
     
     ## SPECIFY VALIDITY OF ARGUMENTS PASSED
-    ## IGNORE localPath IF PASSED TO THIS FUNCTION -- BUT DO NOT THROW ERROR (LEAVE IN validArgs)
-    validArgs <- c("ref", "refName", "localPath")
+    validArgs <- c("ref", "refName")
     if( any(!(names(argList) %in% validArgs)) ){
       stop(sprintf("Valid optional arguments are: %s", paste(validArgs, collapse=", ")))
     }

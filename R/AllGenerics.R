@@ -11,30 +11,9 @@ setGeneric(
 )
 
 setGeneric(
-  name = "downloadRepo",
-  def = function(repository, ...){
-    standardGeneric("downloadRepo")
-  }
-)
-
-setGeneric(
-  name = "downloadRepoBlob",
-  def = function(repository, repositoryPath, ...){
-    standardGeneric("downloadRepoBlob")
-  }
-)
-
-setGeneric(
-  name = "sourceBlob",
+  name = "sourceRepoFile",
   def = function(repository, repositoryPath){
-    standardGeneric("sourceBlob")
-  }
-)
-
-setGeneric(
-  name = "installRepo",
-  def = function(repository, ...){
-    standardGeneric("installRepo")
+    standardGeneric("sourceRepoFile")
   }
 )
 

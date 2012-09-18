@@ -1,19 +1,12 @@
 ## IMPORTS FROM OTHER PACKAGES
 import(methods, RCurl)
 importFrom(RJSONIO, toJSON, fromJSON)
-importFrom(devtools, install)
 importFrom(utils, browseURL)
-
-## PACKAGE HAS A DYNAMIC LIBRARY
-useDynLib(rGithubClient)
 
 ## EXPORT METHODS
 exportMethods(
 getRepo,
-downloadRepo,
-downloadRepoBlob,
-sourceBlob,
-installRepo,
+sourceRepoFile,
 view
 )
 

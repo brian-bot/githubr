@@ -1,11 +1,11 @@
 Package: rGithubClient
 Type: Package
 Title: R Github Client
-Version: 0.3
+Version: 0.4
 Date: 2012-08-28
 Author: Brian M. Bot
 Maintainer: Brian M. Bot <brian.bot@sagebase.org>
-Imports: methods,RCurl,RJSONIO,devtools
+Imports: methods,utils,RCurl,RJSONIO
 Description: Making it easier for R to talk to github
 License: GPL-2
 URL: https://github.com/brian-bot/rGithubClient

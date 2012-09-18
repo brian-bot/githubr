@@ -1,14 +1,14 @@
-\name{onWeb-methods}
+\name{view-methods}
 \docType{methods}
-\alias{onWeb}
-\alias{onWeb-methods}
-\alias{onWeb,githubRepo,character-method}
-\alias{onWeb,githubRepo,missing-method}
+\alias{view}
+\alias{view-methods}
+\alias{view,githubRepo,character-method}
+\alias{view,githubRepo,missing-method}
 
-\title{ Methods for Function \code{onWeb} in Package \pkg{rGithubClient} }
+\title{ Methods for Function \code{view} in Package \pkg{rGithubClient} }
 
 \description{
-  \code{onWeb} allows users to quickly and easily view github repositories (or specific files within said repository) through their default web browser
+  \code{view} allows users to quickly and easily view github repositories (or specific files within said repository) through their default web browser
 }
 
 \section{Methods}{
@@ -31,7 +31,7 @@
 }
 
 \seealso{
-  \code{\link{getRepo-methods}}, \code{\link{downloadRepoBlob-methods}}, \code{\link{downloadRepo-methods}}, \code{\link{installRepo-methods}}, \code{\link{githubRepo-class}}
+  \code{\link{getRepo-methods}}, \code{\link{githubRepo-class}}
 }
 
 \keyword{methods}

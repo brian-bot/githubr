@@ -21,19 +21,18 @@
     \item{\code{ref}:}{Object of class \code{"character"} along with \code{refName}: the type of reference that the repository is trying to capture: one of "branch", "tag", or "commit" }
     \item{\code{refName}:}{Object of class \code{"character"} along with \code{ref}: the name of the branch, tag, or the sha of the requested commit }
     \item{\code{commit}:}{Object of class \code{"character"} specifying the timepoint at which information on the repository was obtained }
-    \item{\code{tree}:}{Object of class \code{"data.frame"} referring to the tree structure present in the repository with columns \code{path}, \code{sha}, and (optionally) \code{downloadedLocally} }
-    \item{\code{localPath}:}{Object of class \code{"character"} -- only necessary if file tree is downloaded via \code{downloadRepo} or if individual files are downloaded via \code{downloadRepoBlob} -- specifying the local directory in which the files will be downloaded }
+    \item{\code{tree}:}{Object of class \code{"data.frame"} referring to the tree structure present in the repository with columns \code{path}, \code{sha} }
   }
 }
 
 \section{Methods}{
   \describe{
-    \item{downloadRepo}{\code{signature(repository = "githubRepo")}: ... }
+    \item{view}{\code{signature(repository = "githubRepo", repositoryPath = "character")}}
 	 }
 }
 
 \seealso{
-  \code{\link{getRepo-methods}}, \code{\link{downloadRepoBlob-methods}}, \code{\link{downloadRepo-methods}}, \code{\link{installRepo-methods}}, \code{\link{onWeb-methods}}
+  \code{\link{getRepo-methods}}, \code{\link{view-methods}}
 }
 
 \keyword{classes}

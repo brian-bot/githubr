@@ -20,19 +20,17 @@ setClass(
     ref = "character",
     refName = "character",
     commit = "character",
-    tree = "data.frame",
-    localPath = "character"),
+    tree = "data.frame"),
     
   prototype = prototype(
     ref = "branch",
-    refName = "master",
-    localPath = NA_character_)
+    refName = "master")
 )
 setValidity(
   "githubRepo",
   function(object){
     ## CHECK TO MAKE SURE ARGUMENTS ARE ONLY OF LENGTH 1
-    for(this in c("user", "repo", "ref", "refName", "commit", "localPath")){
+    for(this in c("user", "repo", "ref", "refName", "commit")){
       if( length(slot(object, this)) > 1L ){
         return(paste(this, " may only contain a single character value\n", sep=""))
       }
@@ -63,13 +61,7 @@ setMethod(
     cat('  refName = ', slot(object, "refName"), '\n', sep="")
     cat('-----------------------------\n')
     cat('  commit  = ', slot(object, "commit"), '\n', sep="")
-    if( any(names(object@tree)=="downloadedLocally") ){
-      cat('  tree contains ', nrow(object@tree), ' files (', sum(object@tree$downloadedLocally),' downloaded locally)\n', sep="")
-    } else{
-      cat('  tree contains ', nrow(object@tree), ' files\n', sep="")
-    }
-    if( !is.na(slot(object, "localPath")) )
-      cat('  localPath = ', slot(object, "localPath"), '\n', sep="")
+    cat('  tree contains ', nrow(object@tree), ' files\n', sep="")
   }
 )
 
