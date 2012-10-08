@@ -1,16 +1,19 @@
 ## AUTHOR: BRIAN M. BOT
 #####
 
+setMethod(
+  f = "sourceRepoFile",
+  signature = c("character", "character"),
+  definition = function(repository, repositoryPath, ...){
+    return(sourceRepoFile(getRepo(repository, ...), repositoryPath))
+  }
+)
+
 
 setMethod(
   f = "sourceRepoFile",
   signature = c("githubRepo", "character"),
-  definition = function(repository, repositoryPath){
-    
-#     if( length(repositoryPath) > 1L ){
-#       return(mapply(sourceRepoFile, repository, repositoryPath))
-#     }
-    ## ANYTHING THAT MAKES IT TO THIS POINT WILL ONLY HAVE ONE VALUE FOR repositoryPath
+  definition = function(repository, repositoryPath, ...){
     
     ## MAKE SURE repositoryPath EXISTS
     if( !all(repositoryPath %in% repository@tree$path) ){

@@ -12,7 +12,7 @@ setGeneric(
 
 setGeneric(
   name = "sourceRepoFile",
-  def = function(repository, repositoryPath){
+  def = function(repository, repositoryPath, ...){
     standardGeneric("sourceRepoFile")
   }
 )
