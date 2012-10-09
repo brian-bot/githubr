@@ -27,12 +27,13 @@
 
 \section{Methods}{
   \describe{
-    \item{view}{\code{signature(repository = "githubRepo", repositoryPath = "character")}}
+    \item{\code{\link{sourceRepoFile}}}{\code{signature(repository = "githubRepo", repositoryPath = "character", ...)}}
+    \item{\code{\link{view}}}{\code{signature(repository = "githubRepo", repositoryPath = "character")}}
 	 }
 }
 
 \seealso{
-  \code{\link{getRepo-methods}}, \code{\link{view-methods}}
+  \code{\link{getRepo}}, \code{\link{sourceRepoFile}}, \code{\link{view}}
 }
 
 \keyword{classes}

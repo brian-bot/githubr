@@ -45,7 +45,7 @@
 }
 
 \seealso{
-  \code{\link{githubRepo-class}}, \code{\link{sourceRepoFile-methods}}, \code{\link{view-methods}}
+  \code{\link{githubRepo}}, \code{\link{sourceRepoFile}}, \code{\link{view}}
 }
 
 \keyword{methods}

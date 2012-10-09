@@ -31,7 +31,7 @@
 }
 
 \seealso{
-  \code{\link{getRepo-methods}}, \code{\link{githubRepo-class}}, \code{\link{sourceRepoFile-methods}}
+  \code{\link{getRepo}}, \code{\link{githubRepo}}, \code{\link{sourceRepoFile}}
 }
 
 \keyword{methods}
