@@ -22,9 +22,9 @@ setMethod(
     
     ## GRAB THE sha VALUES FROM THESE PATHS AND BUILD URLS FOR THEIR BLOBS
     theseShas <- repository@tree$sha[match(repositoryPath, repository@tree$path)]
-    builtUrl <- paste("https://api.github.com/repos", repository@user, repository@repo, "git/blobs", theseShas, sep="/")
+    constructedURLs <- paste("https://api.github.com/repos", repository@user, repository@repo, "git/blobs", theseShas, sep="/")
     e <- new.env()
-    invisible(mapply(builtUrl, FUN=function(url){
+    invisible(mapply(constructedURLs, FUN=function(url){
       eval(parse(text=getURL(url, .opts=.getCache("curlOptsGithubRaw"))), envir=e)
     }))
     return(e)
