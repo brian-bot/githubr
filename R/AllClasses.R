@@ -4,14 +4,6 @@
 #####
 
 setClass(
-  Class = "GlobalCache",
-  representation = representation(env = "environment"),
-  prototype = prototype(
-    env = new.env(parent=emptyenv())
-  )
-)
-
-setClass(
   Class = "githubRepo",
   
   representation = representation(

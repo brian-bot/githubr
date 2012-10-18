@@ -37,3 +37,4 @@ setGeneric(
     standardGeneric(".getCommitTree")
   }
 )
+

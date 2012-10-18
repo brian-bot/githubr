@@ -25,7 +25,7 @@ setMethod(
     constructedURLs <- paste("https://api.github.com/repos", repository@user, repository@repo, "git/blobs", theseShas, sep="/")
     e <- new.env()
     invisible(mapply(constructedURLs, FUN=function(url){
-      eval(parse(text=getURL(url, .opts=.getCache("curlOptsGithubRaw"))), envir=e)
+      eval(parse(text=getURL(url, .opts=list(httpHeader = c(Accept = "application/vnd.github.raw"), low.speed.time=60, low.speed.limit=1, connecttimeout=300, followlocation=TRUE, ssl.verifypeer=TRUE, verbose = FALSE))), envir=e)
     }))
     return(e)
   }
