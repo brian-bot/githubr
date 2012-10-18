@@ -9,10 +9,10 @@ setMethod(
     ## GET THE TREE INFORMATION
     cat(paste("status: getting meta information about commit: ", myRepo@commit, "\n", sep=""))
     constructedURL <- paste("https://api.github.com/repos/", myRepo@user, "/", myRepo@repo, "/git/commits/", myRepo@commit, sep="")
-    commitTreeList <- .getURLjson(constructedURL)
+    commitTreeList <- .getGitURLjson(constructedURL)
     ## GET THE TREE
     cat("status: getting information about the commit tree\n")
-    treeList <- .getURLjson(paste(commitTreeList$tree["url"], "?recursive=1", sep=""))
+    treeList <- .getGitURLjson(paste(commitTreeList$tree["url"], "?recursive=1", sep=""))
     
     thisTree <- data.frame(type  = sapply(treeList$tree, function(x){x[["type"]]}),
                            path = sapply(treeList$tree, function(x){x[["path"]]}),

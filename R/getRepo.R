@@ -39,21 +39,21 @@ setMethod(
       myRepo@commit <- myRepo@refName
     } else{
       if( myRepo@ref == "branch" ){
-        constructedURI <- paste("/", myRepo@user, "/", myRepo@repo, "/git/refs/heads/", myRepo@refName, sep="")
+        constructedURI <- paste("/repos/", myRepo@user, "/", myRepo@repo, "/git/refs/heads/", myRepo@refName, sep="")
         ## GET THE COMMIT
         cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
-        commitList <- .getURLjson(paste("https://api.github.com/repos", constructedURI, sep=""))
+        commitList <- .getGitURLjson(paste("https://api.github.com", constructedURI, sep=""))
         myRepo@commit <- commitList$object["sha"]
       } else{
         if( myRepo@ref == "tag" ){
-          constructedURI <- paste("/", myRepo@user, "/", myRepo@repo, "/git/refs/tags/", myRepo@refName, sep="")
+          constructedURI <- paste("/repos/", myRepo@user, "/", myRepo@repo, "/git/refs/tags/", myRepo@refName, sep="")
           ## GET THE COMMIT
           cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
-          refList <- .getURLjson(paste("https://api.github.com/repos", constructedURI, sep=""))
+          refList <- .getGitURLjson(paste("https://api.github.com", constructedURI, sep=""))
           if( refList$object["type"] == "commit" ){
             myRepo@commit <- refList$object["sha"]
           } else{
-            commitList <- .getURLjson(refList$object[["url"]])
+            commitList <- .getGitURLjson(refList$object[["url"]])
             myRepo@commit <- commitList$object["sha"]
           }
         }

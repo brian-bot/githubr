@@ -25,9 +25,9 @@ setGeneric(
 )
 
 setGeneric(
-  name = ".getURLjson",
+  name = ".getGitURLjson",
   def = function(url, ...){
-    standardGeneric(".getURLjson")
+    standardGeneric(".getGitURLjson")
   }
 )
 
