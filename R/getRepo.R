@@ -39,17 +39,17 @@ setMethod(
       myRepo@commit <- myRepo@refName
     } else{
       if( myRepo@ref == "branch" ){
-        constructedURI <- paste("/repos/", myRepo@user, "/", myRepo@repo, "/git/refs/heads/", myRepo@refName, sep="")
+        constructedURL <- .constructRepoRefURL(myRepo, "heads")
         ## GET THE COMMIT
-        cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
-        commitList <- .getGitURLjson(paste("https://api.github.com", constructedURI, sep=""))
+        cat(paste("status: getting commit information about: ", constructedURL, "\n", sep=""))
+        commitList <- .getGitURLjson(constructedURL)
         myRepo@commit <- commitList$object["sha"]
       } else{
         if( myRepo@ref == "tag" ){
-          constructedURI <- paste("/repos/", myRepo@user, "/", myRepo@repo, "/git/refs/tags/", myRepo@refName, sep="")
+          constructedURL <- .constructRepoRefURL(myRepo, "tags")
           ## GET THE COMMIT
-          cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
-          refList <- .getGitURLjson(paste("https://api.github.com", constructedURI, sep=""))
+          cat(paste("status: getting commit information about: ", constructedURL, "\n", sep=""))
+          refList <- .getGitURLjson(constructedURL)
           if( refList$object["type"] == "commit" ){
             myRepo@commit <- refList$object["sha"]
           } else{
@@ -64,6 +64,4 @@ setMethod(
     return(myRepo)
   }
 )
-
-
 

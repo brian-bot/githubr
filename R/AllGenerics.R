@@ -24,17 +24,3 @@ setGeneric(
   }
 )
 
-setGeneric(
-  name = ".getGitURLjson",
-  def = function(url, ...){
-    standardGeneric(".getGitURLjson")
-  }
-)
-
-setGeneric(
-  name = ".getCommitTree",
-  def = function(myRepo){
-    standardGeneric(".getCommitTree")
-  }
-)
-
