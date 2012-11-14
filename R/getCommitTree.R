@@ -20,6 +20,7 @@ setMethod(
                            stringsAsFactors=FALSE)
     thisTree <- thisTree[thisTree$type != "tree", ]
     thisTree$type <- NULL
+    rownames(thisTree) <- 1:nrow(thisTree)
     
     myRepo@tree <- thisTree
     
