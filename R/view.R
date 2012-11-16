@@ -6,7 +6,7 @@ setMethod(
   signature = signature("githubRepo", "missing"),
   definition = function(repository, repositoryPath){
     
-    constructedURL <- paste("https://github.com", repository@user, repository@repo, "tree", repository@commit, sep="/")
+    constructedURL <- .constructWebURL(repository)
     .doView(constructedURL)
   }
 )
@@ -20,7 +20,7 @@ setMethod(
       stop(sprintf("repositoryPath %s does not match any paths within the repository tree", repositoryPath))
     }
     
-    constructedURL <- paste("https://github.com", repository@user, repository@repo, "blob", repository@commit, repositoryPath, sep="/")
+    constructedURL <- .constructWebURL(repository, repositoryPath=repositoryPath)
     .doView(constructedURL)
   }
 )
