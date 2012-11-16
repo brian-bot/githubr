@@ -9,6 +9,5 @@ purpose is to allow users to:
 current status
 * only deal with publicly available repos (no OAuth)
 * get away from downloading files and move towards sourcing in files
+* sourceRepoFile sources code into the global environment, but allows users to pass optional arguments as specified in the base::source() function
 
-current issue / most likely thing to change
-* how best to 'source' in files via sourceRepoFile - into new environment - into global environment - etc.

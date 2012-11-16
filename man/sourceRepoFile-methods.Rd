@@ -9,19 +9,21 @@
 
 \description{
   \describe{
-    \code{sourceRepoFile} takes a file from a github repository and sources the file into a new environment which is returned to the user
+    \code{sourceRepoFile} takes a file from a github repository and sources the file into the global environment (unless specified otherwise via \code{...} options passed to \code{source()})
   }
 }
 
 \section{Methods}{
   \describe{
+    
     \item{\code{signature(repository = "character", repositoryPath = "character", ...)}}{
       \describe{
         \item{\code{repository, ...}}{
-          name of repository, in the form of /owner/repo, which is passed to \code{getRepo} along with optional arguments specified in \code{...}
+          name of repository, in the form of /owner/repo, which is passed to \code{getRepo} along with optional arguments \code{ref} and \code{refName}
         }
       }
     }
+    
     \item{\code{signature(repository = "githubRepo", repositoryPath = "character")}}{
       \describe{
         \item{\code{repository}}{
@@ -30,13 +32,16 @@
         \item{\code{repositoryPath}}{
           path within the repository of the file to be sourced - must be a valid path in the repository (\code{repository@tree$path})
         }
+        \item{\code{...}}{
+          optional arguments to be passed to \code{source()} - especially \code{local = <environment>} in order to source files into a specified <environment>
+        }
       }
     }
   }
 }
 
 \section{Value}{
-  return value is an environment containing the results of the sourced in file (works best for functions)
+  output from all files sourced
 }
 
 \seealso{

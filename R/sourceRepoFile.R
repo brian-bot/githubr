@@ -5,7 +5,22 @@ setMethod(
   f = "sourceRepoFile",
   signature = c("character", "character"),
   definition = function(repository, repositoryPath, ...){
-    return(sourceRepoFile(getRepo(repository, ...), repositoryPath))
+    argList <- list(...)
+    
+    ## SPECIFY VALIDITY OF ARGUMENTS PASSED
+    validArgs <- c("ref", "refName")
+    getRepoArgs <- list()
+    getRepoArgs[["repository"]] <- repository
+    for( x in validArgs ){
+      if( x %in% names(argList) ){
+        getRepoArgs[[x]] <-  argList[[x]]
+        argList[[x]] <- NULL
+      }
+    }
+    
+    myRepo <- do.call(getRepo, getRepoArgs)
+    sourceArgs <- c(argList, list(repository=myRepo, repositoryPath=repositoryPath))
+    return(do.call(sourceRepoFile, sourceArgs))
   }
 )
 
@@ -23,11 +38,12 @@ setMethod(
     ## GRAB THE sha VALUES FROM THESE PATHS AND BUILD URLS FOR THEIR BLOBS
     theseShas <- repository@tree$sha[match(repositoryPath, repository@tree$path)]
     constructedURLs <- .constructBlobURL(repository, theseShas)
-    e <- new.env()
-    invisible(mapply(constructedURLs, FUN=function(url){
-      eval(parse(text=getURL(url, .opts=list(httpHeader = c(Accept = "application/vnd.github.raw"), low.speed.time=60, low.speed.limit=1, connecttimeout=300, followlocation=TRUE, ssl.verifypeer=TRUE, verbose = FALSE))), envir=e)
-    }))
-    return(e)
+    
+    for( url in constructedURLs ){
+      txt <- getURL(url, .opts=list(httpHeader = c(Accept="application/vnd.github.raw"), low.speed.time=60, low.speed.limit=1, connecttimeout=300, followlocation=TRUE, ssl.verifypeer=TRUE, verbose = FALSE))
+      source(file=textConnection(txt), ...)
+    }
+    
   }
 )
 
