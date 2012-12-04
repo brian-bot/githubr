@@ -3,8 +3,27 @@
 
 setMethod(
   f = "view",
+  signature = signature("character", "ANY"),
+  definition = function(repository, repositoryPath, ...){
+    
+    argList <- list(...)
+    argList[["repository"]] <- repository
+    
+    myRepo <- do.call(getRepo, argList)
+    
+    if(missing("repositoryPath")){
+      return(view(myRepo))
+    } else{
+      return(view(myRepo, repositoryPath))
+    }
+  }
+)
+
+
+setMethod(
+  f = "view",
   signature = signature("githubRepo", "missing"),
-  definition = function(repository, repositoryPath){
+  definition = function(repository, repositoryPath, ...){
     
     constructedURL <- .constructWebURL(repository)
     .doView(constructedURL)
@@ -14,7 +33,7 @@ setMethod(
 setMethod(
   f = "view",
   signature = signature("githubRepo", "character"),
-  definition = function(repository, repositoryPath){
+  definition = function(repository, repositoryPath, ...){
     
     if( !any(repository@tree$path == repositoryPath) ){
       stop(sprintf("repositoryPath %s does not match any paths within the repository tree", repositoryPath))

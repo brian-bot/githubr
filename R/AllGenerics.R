@@ -19,7 +19,7 @@ setGeneric(
 
 setGeneric(
   name = "view",
-  def = function(repository, repositoryPath){
+  def = function(repository, repositoryPath, ...){
     standardGeneric("view")
   }
 )

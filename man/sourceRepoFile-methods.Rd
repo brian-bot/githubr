@@ -19,7 +19,7 @@
     \item{\code{signature(repository = "character", repositoryPath = "character", ...)}}{
       \describe{
         \item{\code{repository, ...}}{
-          name of repository, in the form of /owner/repo, which is passed to \code{getRepo} along with optional arguments \code{ref} and \code{refName}
+          name of repository, in the form of /owner/repo, which is passed to \code{getRepo} along with optional arguments \code{ref} and \code{refName} - resulting \code{githubRepo} object is passed along with repositoryPath back to \code{sourceRepoFile} method below.
         }
       }
     }
