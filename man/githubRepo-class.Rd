@@ -33,7 +33,7 @@
 }
 
 \seealso{
-  \code{\link{getRepo}}, \code{\link{sourceRepoFile}}, \code{\link{view}}
+  \code{\link{getPermlink}}, \code{\link{getRepo}}, \code{\link{sourceRepoFile}}, \code{\link{view}}
 }
 
 \keyword{classes}
