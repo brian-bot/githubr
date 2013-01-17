@@ -6,6 +6,7 @@ importFrom(utils, browseURL)
 ## EXPORT METHODS
 exportMethods(
 getRepo,
+getPermlink,
 sourceRepoFile,
 view
 )

@@ -16,12 +16,18 @@
   return(url)
 }
 
-.constructWebURL <- function(repository, repositoryPath=NA){
+.constructHtmlPermlink <- function(repository, repositoryPath=NA){
   if( is.na(repositoryPath) ){
-    url <-paste("https://github.com", repository@user, repository@repo, "tree", repository@commit, sep="/")
-    return(url)
+    permlink <-paste("https://github.com", repository@user, repository@repo, "tree", repository@commit, sep="/")
+    return(permlink)
   } else{
-    url <- paste("https://github.com", repository@user, repository@repo, "blob", repository@commit, repositoryPath, sep="/")
-    return(url)
+    permlink <- paste("https://github.com", repository@user, repository@repo, "blob", repository@commit, repositoryPath, sep="/")
+    return(permlink)
   }
 }
+
+.constructRawPermlink <- function(repository, repositoryPath){
+  permlink <- paste("https://raw.github.com", repository@user, repository@repo, repository@commit, repositoryPath, sep="/")
+  return(permlink)
+}
+

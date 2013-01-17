@@ -18,6 +18,13 @@ setGeneric(
 )
 
 setGeneric(
+  name = "getPermlink",
+  def = function(repository, repositoryPath, ...){
+    standardGeneric("getPermlink")
+  }
+)
+
+setGeneric(
   name = "view",
   def = function(repository, repositoryPath, ...){
     standardGeneric("view")
