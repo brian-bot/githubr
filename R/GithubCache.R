@@ -2,16 +2,22 @@
 ## AUTHOR: BRIAN M. BOT
 #####
 
-.getGithubCache <- function(key){
-  cache <- new("GithubCache")
-  cache@env[[key]]
-  return(NULL)
-}
-
 .setGithubCache <- function(key, value){
   cache <- new("GithubCache")
   cache@env[[key]] <- value
   return(NULL)
 }
 
+.inGithubCache <- function(key){
+  cache <- new("GithubCache")
+  return(key %in% ls(cache@env))
+}
 
+.getGithubCache <- function(key){
+  if( !.inGithubCache(key) ){
+    return(NULL)
+  } else{
+    cache <- new("GithubCache")
+    return(cache@env[[key]])
+  }
+}
