@@ -15,3 +15,7 @@
 .onUnload <- function(libpath) .Last.lib()
 
 
+.userAgent<-function(){
+  myOwnVersion<-packageDescription("rGithubClient", fields="Version")
+  paste("rGithubClient", myOwnVersion, sep="/")
+}
