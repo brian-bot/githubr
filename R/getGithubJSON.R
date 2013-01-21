@@ -1,7 +1,7 @@
 ## FUNCTION THAT WILL CHECK ALL getURL CALLS FOR FAILURES AND CONVERT JSON RESPONSES
 #####
 
-.getGitURLjson <- function(url, ...){
+.getGithubJSON <- function(url, ...){
   
   tryGetURL <- getURL(url, ...)
   tryGetURL <- fromJSON(tryGetURL)

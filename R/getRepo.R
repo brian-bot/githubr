@@ -42,18 +42,18 @@ setMethod(
         constructedURL <- .constructRepoRefURL(myRepo, "heads")
         ## GET THE COMMIT
         cat(paste("status: getting commit information about: ", constructedURL, "\n", sep=""))
-        commitList <- .getGitURLjson(constructedURL)
+        commitList <- .getGithubJSON(constructedURL)
         myRepo@commit <- commitList$object["sha"]
       } else{
         if( myRepo@ref == "tag" ){
           constructedURL <- .constructRepoRefURL(myRepo, "tags")
           ## GET THE COMMIT
           cat(paste("status: getting commit information about: ", constructedURL, "\n", sep=""))
-          refList <- .getGitURLjson(constructedURL)
+          refList <- .getGithubJSON(constructedURL)
           if( refList$object["type"] == "commit" ){
             myRepo@commit <- refList$object["sha"]
           } else{
-            commitList <- .getGitURLjson(refList$object[["url"]])
+            commitList <- .getGithubJSON(refList$object[["url"]])
             myRepo@commit <- commitList$object["sha"]
           }
         }
