@@ -26,14 +26,12 @@
       keys <- sapply(keyVal, "[[", 1)
       vals <- sapply(keyVal, "[[", 2)
       
-      ## NEEDS TO HAVE BOTH A USER AND A TOKEN VALUE
-      if( !all(c("\tuser", "\ttoken") %in% keys) ){
-        return(NULL)
-      } else{
-        user <- vals[ which(keys == "\tuser") ]
-        token <- vals[ which(keys == "\ttoken") ]
-        return(list(user=user, token=token))
-      }
+      keys <- sub("\t", "", keys, fixed=T)
+      outList <- list()
+      for( i in 1:length(keyVal) )
+        outList[[keys[i]]] <- vals[i]
+      
+      return(outList)
     }
   }
 }
