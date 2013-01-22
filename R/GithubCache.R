@@ -6,6 +6,15 @@
 .setGithubCache <- function(key, value){
   cache <- new("GithubCache")
   cache@env[[key]] <- value
+  
+  ## IF ONE OF THESE PARAMS THEN ADD TO OPTS
+  params <- c("userpwd", "httpauth")
+  if(key %in% params){
+    opts <- .getGithubCache("opts")
+    opts[[key]] <- value
+    .setGithubCache("opts", opts)
+  }
+  
   return(NULL)
 }
 
@@ -22,3 +31,4 @@
     return(cache@env[[key]])
   }
 }
+

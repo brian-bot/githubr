@@ -11,10 +11,13 @@
                 function(...) .Last.lib(),
                 onexit=TRUE)
   
-  ## SET THE USER-AGENT FOR THIS VERSION OF THE CLIENT
-  .setGithubCache("userAgent", paste("rGithubClient", packageDescription("rGithubClient", fields="Version"), sep="/"))
-  
+  ## SET GITHUB CACHE AND START OPTIONS
+  .setGithubCache("opts", list())
+  .setGithubCache("User-Agent", .userAgent())
 }
 
 .onUnload <- function(libpath) .Last.lib()
 
+.userAgent <- function(){
+  return(paste("rGithubClient", packageDescription("rGithubClient", fields="Version"), sep="/"))
+}

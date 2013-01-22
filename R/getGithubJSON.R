@@ -3,7 +3,8 @@
 
 .getGithubJSON <- function(url, ...){
   
-  tryGetURL <- getURL(url, ...)
+  tryGetURL <- getURL(url, .opts=.getGithubCache("opts"),
+                      httpheader=c("Accept" = "application/json", "User-Agent" = .getGithubCache("User-Agent")), ...)
   tryGetURL <- fromJSON(tryGetURL)
   if(is.character(tryGetURL)){
     if(tryGetURL["message"] == "Not Found")
