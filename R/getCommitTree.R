@@ -14,6 +14,7 @@
   thisTree <- data.frame(type  = sapply(treeList$tree, function(x){x[["type"]]}),
                          path = sapply(treeList$tree, function(x){x[["path"]]}),
                          sha  = sapply(treeList$tree, function(x){x[["sha"]]}),
+                         url = sapply(treeList$tree, function(x){x[["url"]]}),
                          stringsAsFactors=FALSE)
   thisTree <- thisTree[thisTree$type != "tree", ]
   thisTree$type <- NULL
