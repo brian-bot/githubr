@@ -3,6 +3,9 @@ import(methods, RCurl)
 importFrom(RJSONIO, toJSON, fromJSON)
 importFrom(utils, browseURL)
 
+## EXPORT S3 FUNCTIONS
+export(setGithubAuth)
+
 ## EXPORT METHODS
 exportMethods(
 getRepo,
