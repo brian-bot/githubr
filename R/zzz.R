@@ -13,7 +13,15 @@
   
   ## SET GITHUB CACHE AND START OPTIONS
   .setGithubCache("opts", list())
+  .setGithubCache("httpheader", character())
+  .setGithubCache("Accept", "application/json")
   .setGithubCache("User-Agent", .userAgent())
+  .setGithubCache("low.speed.time", 60)
+  .setGithubCache("low.speed.limit", 1)
+  .setGithubCache("connecttimeout", 300)
+  .setGithubCache("followlocation", TRUE)
+  .setGithubCache("ssl.verifypeer", TRUE)
+  .setGithubCache("verbose", FALSE)
 }
 
 .onUnload <- function(libpath) .Last.lib()

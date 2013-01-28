@@ -40,7 +40,9 @@ setMethod(
     constructedURLs <- .constructBlobURL(repository, theseShas)
     
     for( url in constructedURLs ){
-      txt <- getURL(url, .opts=list(httpHeader = c(Accept="application/vnd.github.raw"), low.speed.time=60, low.speed.limit=1, connecttimeout=300, followlocation=TRUE, ssl.verifypeer=TRUE, verbose = FALSE))
+      rawHeader <- .getGithubCache("httpheader")
+      rawHeader["Accept"] <- "application/vnd.github.raw"
+      txt <- getURL(url, httpheader=rawHeader, .opts=.getGithubCache("opts"))
       source(file=textConnection(txt), ...)
     }
     
