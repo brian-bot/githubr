@@ -3,6 +3,13 @@
 
 -----
 
+to install the `rGithubClient`:
+```r
+install.packages("devtools")
+require(devtools)
+install_github("rGithubClient", "brian-bot")
+```
+
 purpose is to allow users to:
 * use github as a version control system for analysis code in addition enterprise software development
 * store code centrally for sourcing into an analysis environment
