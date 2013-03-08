@@ -8,7 +8,7 @@
   cache@env[[key]] <- value
   
   ## IF ONE OF THESE PARAMS THEN ADD TO opts
-  validOpts <- c("low.speed.time", "low.speed.limit", "connecttimeout", "followlocation", "ssl.verifypeer", "verbose")
+  validOpts <- c("low.speed.time", "low.speed.limit", "connecttimeout", "followlocation", "ssl.verifypeer", "verbose", "cainfo")
   if(key %in% validOpts){
     opts <- .getGithubCache("opts")
     opts[[key]] <- value

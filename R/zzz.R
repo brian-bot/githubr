@@ -1,6 +1,8 @@
 ## Startup functions and global constants
 ###############################################################################
 
+kCertBundle <- "certificateBundle/cacert.pem"
+
 .onLoad <- function(libname, pkgname){
   
   ## install cleanup hooks upon shutdown
@@ -22,6 +24,7 @@
   .setGithubCache("followlocation", TRUE)
   .setGithubCache("ssl.verifypeer", TRUE)
   .setGithubCache("verbose", FALSE)
+  .setGithubCache("cainfo", file.path(libname, pkgname, kCertBundle))
 }
 
 .onUnload <- function(libpath) .Last.lib()
