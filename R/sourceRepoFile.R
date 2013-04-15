@@ -18,6 +18,7 @@ setMethod(
       }
     }
     
+    ## SEND ON ... ARGS (NOT USED FOR REPOSITORY CONSTRUCTION) TO base::source()
     myRepo <- do.call(getRepo, getRepoArgs)
     sourceArgs <- c(argList, list(repository=myRepo, repositoryPath=repositoryPath))
     return(do.call(sourceRepoFile, sourceArgs))

@@ -27,7 +27,7 @@ setMethod(
   }
 )
 
-## FINALLY THE MOST SPECIFIC OF THE FUNCTIONS (WHICH ALL WILL END UP CALLING)
+## THE MOST SPECIFIC OF THE FUNCTIONS (WHICH ALL WILL END UP CALLING)
 setMethod(
   f = "getPermlink",
   signature = signature("githubRepo", "character"),

@@ -5,14 +5,6 @@ kCertBundle <- "certificateBundle/cacert.pem"
 
 .onLoad <- function(libname, pkgname){
   
-  ## install cleanup hooks upon shutdown
-  reg.finalizer(topenv(parent.frame()),
-                function(...) .Last.lib(),
-                onexit=TRUE)
-  reg.finalizer(getNamespace("rGithubClient"),
-                function(...) .Last.lib(),
-                onexit=TRUE)
-  
   ## SET GITHUB CACHE AND START OPTIONS
   .setGithubCache("opts", list())
   .setGithubCache("httpheader", character())
@@ -26,8 +18,6 @@ kCertBundle <- "certificateBundle/cacert.pem"
   .setGithubCache("verbose", FALSE)
   .setGithubCache("cainfo", file.path(libname, pkgname, kCertBundle))
 }
-
-.onUnload <- function(libpath) .Last.lib()
 
 .userAgent <- function(){
   return(paste("rGithubClient", packageDescription("rGithubClient", fields="Version"), sep="/"))
