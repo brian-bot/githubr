@@ -27,6 +27,15 @@ setMethod(
   }
 )
 
+## HANDLE MISSING CASE FOR REPOSITORY PATH
+setMethod(
+  f = "getPermlink",
+  signature = signature("githubRepo", "missing"),
+  definition = function(repository, repositoryPath, ...){
+    getPermlink(repository, as.character(NA), ...)
+  }
+)
+
 ## THE MOST SPECIFIC OF THE FUNCTIONS (WHICH ALL WILL END UP CALLING)
 setMethod(
   f = "getPermlink",
