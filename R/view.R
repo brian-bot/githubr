@@ -15,5 +15,6 @@ setMethod(
       warning("Unable to launch the web browser. Paste this url into your web browser: %s", htmlPermlink)
       warning(e)
     })
-    return(invisible(htmlPermlink))  }
+    return(invisible(htmlPermlink))
+  }
 )

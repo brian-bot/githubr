@@ -42,6 +42,7 @@ setGithubAuth <- function(user, password){
   .setGithubCache("Authorization", paste("token", token))
   
   message(sprintf("OAuth successfully set for user %s!", user))
+  return(invisible(token))
 }
 
 .buildOAuthBody <- function(){
