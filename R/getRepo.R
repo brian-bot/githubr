@@ -34,6 +34,9 @@ setMethod(
       myRepo@refName <- argList[["refName"]]
     }
     
+    ## GET GENERAL REPO INFO
+    myRepo@apiResponses$repo <- .getGithubJSON(.constructRepoURL(myRepo))
+    
     ## DEPENDING ON ref, DISPATCH TO GET COMMIT DIFFERENT WAYS
     if( myRepo@ref == "commit" ){
       myRepo@commit <- myRepo@refName
@@ -42,20 +45,18 @@ setMethod(
         constructedURL <- .constructRepoRefURL(myRepo, "heads")
         ## GET THE COMMIT
         cat(paste("status: getting commit information about: ", constructedURL, "\n", sep=""))
-        commitList <- .getGithubJSON(constructedURL)
-        myRepo@commit <- commitList$object["sha"]
+        myRepo@apiResponses$ref <- .getGithubJSON(constructedURL)
+        myRepo@commit <- myRepo@apiResponses$ref$object["sha"]
       } else{
         if( myRepo@ref == "tag" ){
           constructedURL <- .constructRepoRefURL(myRepo, "tags")
           ## GET THE COMMIT
           cat(paste("status: getting commit information about: ", constructedURL, "\n", sep=""))
-          refList <- .getGithubJSON(constructedURL)
-          if( refList$object["type"] == "commit" ){
-            myRepo@commit <- refList$object["sha"]
-          } else{
-            commitList <- .getGithubJSON(refList$object[["url"]])
-            myRepo@commit <- commitList$object["sha"]
+          myRepo@apiResponses$ref <- .getGithubJSON(constructedURL)
+          if( myRepo@apiResponses$ref$object["type"] != "commit" ){
+            myRepo@apiResponses$ref <- .getGithubJSON(myRepo@apiResponses$ref$object[["url"]])
           }
+          myRepo@commit <- myRepo@apiResponses$ref$object["sha"]
         }
       }
     }

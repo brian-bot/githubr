@@ -6,6 +6,11 @@
   return(url)
 }
 
+.constructRepoURL <- function(repository, type){
+  url <-paste("https://api.github.com/repos", repository@user, repository@repo, sep="/")
+  return(url)
+}
+
 .constructRepoRefURL <- function(repository, type){
   url <-paste("https://api.github.com/repos", repository@user, repository@repo, "git/refs", type, repository@refName, sep="/")
   return(url)

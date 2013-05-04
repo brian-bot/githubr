@@ -12,6 +12,7 @@ setClass(
     ref = "character",
     refName = "character",
     commit = "character",
+    apiResponses = "list",
     tree = "data.frame"),
     
   prototype = prototype(
@@ -29,11 +30,18 @@ setValidity(
     }
     
     ## CHECK VALID VALUES FOR ref
-    validrefs <- c("tag", "branch", "commit")
-    if( !(object@ref %in% validrefs) ){
-      return(sprintf("Valid refs are: %s", paste(validrefs, collapse=", ")))
+    validRefs <- c("tag", "branch", "commit")
+    if( !(object@ref %in% validRefs) ){
+      return(sprintf("Valid refs are: %s", paste(validRefs, collapse=", ")))
     }
     
+    ## CHECK VALID VALUES FOR ref
+    validResponses <- c("repo", "ref", "commit", "tree")
+    if( length(object@apiResponses) > 0L ){
+      if( !(names(object@apiResponses) %in% validResponses) ){
+        return(sprintf("Valid API responses are: %s", paste(validResponses, collapse=", ")))
+      }
+    }
   }
 )
 
