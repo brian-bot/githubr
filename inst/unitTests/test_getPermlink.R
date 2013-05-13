@@ -1,0 +1,3 @@
+## TESTING FOR getPermlink METHOD
+#####
+
