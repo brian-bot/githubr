@@ -26,13 +26,13 @@
   
   require("RUnit", quietly=TRUE) || stop("RUnit package not found")
   RUnit_opts <- getOption("RUnit", list())
-  if(rGithubClient:::.getCache("debug")) {
-    RUnit_opts$verbose <- 10L
-    RUnit_opts$silent <- FALSE
-  } else {
-    RUnit_opts$verbose <- 0L
-    RUnit_opts$silent <- TRUE
-  }
+#   if(rGithubClient:::.getCache("debug")) {
+#     RUnit_opts$verbose <- 10L
+#     RUnit_opts$silent <- FALSE
+#   } else {
+#     RUnit_opts$verbose <- 0L
+#     RUnit_opts$silent <- TRUE
+#   }
   RUnit_opts$verbose_fail_msg <- TRUE
   options(RUnit = RUnit_opts)
   suite <- defineTestSuite(name=paste("rGithubClient RUnit Test Suite", suiteName),
