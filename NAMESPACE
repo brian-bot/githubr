@@ -4,14 +4,16 @@ importFrom(RJSONIO, toJSON, fromJSON)
 importFrom(utils, browseURL)
 
 ## EXPORT S3 FUNCTIONS
-export(setGithubAuth)
+export(
+setGithubAuth,
+view
+)
 
 ## EXPORT METHODS
 exportMethods(
 getRepo,
 getPermlink,
-sourceRepoFile,
-view
+sourceRepoFile
 )
 
 
