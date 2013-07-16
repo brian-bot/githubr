@@ -7,6 +7,7 @@ kCertBundle <- "certificateBundle/cacert.pem"
   
   ## SET GITHUB CACHE AND START OPTIONS
   .setGithubCache("opts", list())
+  .setGithubCache("githubEndpoint", "https://api.github.com/")
   .setGithubCache("httpheader", character())
   .setGithubCache("Accept", "application/json")
   .setGithubCache("User-Agent", .userAgent())

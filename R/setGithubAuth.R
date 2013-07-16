@@ -6,7 +6,7 @@ setGithubAuth <- function(user, password){
   stopifnot( length(password)==1L & is.character(password) )
   
   ## CHECK GITHUB AUTH
-  getAuths <- .getGithubJSON("https://api.github.com/authorizations",
+  getAuths <- githubRestGET("/authorizations",
                              userpwd = paste(user, password, sep=":"), httpauth = 1L)
   if( is.character(getAuths) ){
     if( "Bad credentials" %in% getAuths )
@@ -28,7 +28,7 @@ setGithubAuth <- function(user, password){
   
   ## IF NO TOKEN - POST INFORMATION TO CREATE ONE FOR THE USER
   if( !exists("token") ){
-    setAuth <- .getGithubJSON("https://api.github.com/authorizations",
+    setAuth <- githubRestGET("/authorizations",
                               postfields = .buildOAuthBody(),
                               userpwd = paste(user, password, sep=":"), httpauth = 1L)
     token <- setAuth$token

@@ -1,23 +1,23 @@
 ## CONSTRUCTOR FUNCTIONS
 #####
 
-.constructBlobURL <- function(repository, shas){
-  url <- paste("https://api.github.com/repos", repository@user, repository@repo, "git/blobs", shas, sep="/")
+.constructBlobURI <- function(repository, shas){
+  url <- paste("/repos", repository@user, repository@repo, "git/blobs", shas, sep="/")
   return(url)
 }
 
-.constructRepoURL <- function(repository, type){
-  url <-paste("https://api.github.com/repos", repository@user, repository@repo, sep="/")
+.constructRepoURI <- function(repository){
+  url <-paste("/repos", repository@user, repository@repo, sep="/")
   return(url)
 }
 
-.constructRepoRefURL <- function(repository, type){
-  url <-paste("https://api.github.com/repos", repository@user, repository@repo, "git/refs", type, repository@refName, sep="/")
+.constructRepoRefURI <- function(repository, type){
+  url <-paste("/repos", repository@user, repository@repo, "git/refs", type, repository@refName, sep="/")
   return(url)
 }
 
-.constructCommitURL <- function(repository){
-  url <-paste("https://api.github.com/repos", repository@user, repository@repo, "git/commits", repository@commit, sep="/")
+.constructCommitURI <- function(repository){
+  url <-paste("/repos", repository@user, repository@repo, "git/commits", repository@commit, sep="/")
   return(url)
 }
 

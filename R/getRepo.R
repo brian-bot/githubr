@@ -35,26 +35,26 @@ setMethod(
     }
     
     ## GET GENERAL REPO INFO
-    myRepo@apiResponses$repo <- .getGithubJSON(.constructRepoURL(myRepo))
+    myRepo@apiResponses$repo <- githubRestGET(.constructRepoURI(myRepo))
     
     ## DEPENDING ON ref, DISPATCH TO GET COMMIT DIFFERENT WAYS
     if( myRepo@ref == "commit" ){
       myRepo@commit <- myRepo@refName
     } else{
       if( myRepo@ref == "branch" ){
-        constructedURL <- .constructRepoRefURL(myRepo, "heads")
+        constructedURI <- .constructRepoRefURI(myRepo, "heads")
         ## GET THE COMMIT
-        cat(paste("status: getting commit information about: ", constructedURL, "\n", sep=""))
-        myRepo@apiResponses$ref <- .getGithubJSON(constructedURL)
+        cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
+        myRepo@apiResponses$ref <- githubRestGET(constructedURI)
         myRepo@commit <- myRepo@apiResponses$ref$object["sha"]
       } else{
         if( myRepo@ref == "tag" ){
-          constructedURL <- .constructRepoRefURL(myRepo, "tags")
+          constructedURI <- .constructRepoRefURI(myRepo, "tags")
           ## GET THE COMMIT
-          cat(paste("status: getting commit information about: ", constructedURL, "\n", sep=""))
-          myRepo@apiResponses$ref <- .getGithubJSON(constructedURL)
+          cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
+          myRepo@apiResponses$ref <- githubRestGET(constructedURI)
           if( myRepo@apiResponses$ref$object["type"] != "commit" ){
-            myRepo@apiResponses$ref <- .getGithubJSON(myRepo@apiResponses$ref$object[["url"]])
+            myRepo@apiResponses$ref <- githubRestGET(myRepo@apiResponses$ref$object[["url"]])
           }
           myRepo@commit <- myRepo@apiResponses$ref$object["sha"]
         }

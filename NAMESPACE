@@ -5,6 +5,7 @@ importFrom(utils, browseURL)
 
 ## EXPORT S3 FUNCTIONS
 export(
+githubRestGET,
 setGithubAuth,
 view
 )
