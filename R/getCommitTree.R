@@ -9,7 +9,8 @@
   myRepo@apiResponses$commit <- githubRestGET(constructedURI)
   ## GET THE TREE
   cat("status: getting information about the commit tree\n")
-  myRepo@apiResponses$tree <- githubRestGET(paste(myRepo@apiResponses$commit$tree["url"], "?recursive=1", sep=""))
+  constructedTreeURI <- .constructCommitTreeURI(myRepo)
+  myRepo@apiResponses$tree <- githubRestGET(constructedTreeURI)
   
   thisTree <- data.frame(type  = sapply(myRepo@apiResponses$tree$tree, function(x){x[["type"]]}),
                          path = sapply(myRepo@apiResponses$tree$tree, function(x){x[["path"]]}),

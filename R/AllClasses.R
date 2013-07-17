@@ -20,8 +20,8 @@ setClass(
     refName = "master")
 )
 setValidity(
-  "githubRepo",
-  function(object){
+  Class = "githubRepo",
+  method = function(object){
     ## CHECK TO MAKE SURE ARGUMENTS ARE ONLY OF LENGTH 1
     for(this in c("user", "repo", "ref", "refName", "commit")){
       if( length(slot(object, this)) > 1L ){

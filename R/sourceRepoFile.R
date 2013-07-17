@@ -38,7 +38,7 @@ setMethod(
     
     ## GRAB THE sha VALUES FROM THESE PATHS AND BUILD URLS FOR THEIR BLOBS
     theseShas <- repository@tree$sha[match(repositoryPath, repository@tree$path)]
-    constructedURIs <- .constructBlobURI(repository, theseShas)
+    constructedURIs <- .constructBlobURL(repository, theseShas)
     
     for( uri in constructedURIs ){
       rawHeader <- .getGithubCache("httpheader")

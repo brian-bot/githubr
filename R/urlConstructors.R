@@ -1,8 +1,10 @@
 ## CONSTRUCTOR FUNCTIONS
 #####
 
-.constructBlobURI <- function(repository, shas){
-  url <- paste("/repos", repository@user, repository@repo, "git/blobs", shas, sep="/")
+.constructBlobURL <- function(repository, shas){
+  u <- sapply(repository@apiResponses$tree$tree, "[[", "url")
+  s <- sapply(repository@apiResponses$tree$tree, "[[", "sha")
+  url <- u[which(s %in% shas)]
   return(url)
 }
 
@@ -18,6 +20,11 @@
 
 .constructCommitURI <- function(repository){
   url <-paste("/repos", repository@user, repository@repo, "git/commits", repository@commit, sep="/")
+  return(url)
+}
+
+.constructCommitTreeURI <- function(repository){
+  url <- paste(repository@apiResponses$commit$tree["url"], "?recursive=1", sep="")
   return(url)
 }
 
