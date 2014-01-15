@@ -13,27 +13,17 @@
   return(url)
 }
 
-.constructRepoRefURI <- function(repository, type){
-  url <-paste("/repos", repository@user, repository@repo, "git/refs", type, repository@refName, sep="/")
-  return(url)
-}
-
 .constructCommitURI <- function(repository){
-  url <-paste("/repos", repository@user, repository@repo, "git/commits", repository@commit, sep="/")
-  return(url)
-}
-
-.constructCommitTreeURI <- function(repository){
-  url <- paste(repository@apiResponses$commit$tree["url"], "?recursive=1", sep="")
+  url <- paste(sub("{/sha}", "", repository@apiResponses$repo$git_commits_url, fixed=T), repository@commit, sep="/")
   return(url)
 }
 
 .constructHtmlPermlink <- function(repository, repositoryPath=NA){
   if( is.na(repositoryPath) ){
-    permlink <-paste("https://github.com", repository@user, repository@repo, "tree", repository@commit, sep="/")
+    permlink <-paste(repository@apiResponses$repo$html_url, "tree", repository@commit, sep="/")
     return(permlink)
   } else{
-    permlink <- paste("https://github.com", repository@user, repository@repo, "blob", repository@commit, repositoryPath, sep="/")
+    permlink <- paste(repository@apiResponses$repo$html_url, "blob", repository@commit, repositoryPath, sep="/")
     return(permlink)
   }
 }

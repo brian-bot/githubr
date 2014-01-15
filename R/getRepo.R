@@ -40,26 +40,29 @@ setMethod(
     ## DEPENDING ON ref, DISPATCH TO GET COMMIT DIFFERENT WAYS
     if( myRepo@ref == "commit" ){
       myRepo@commit <- myRepo@refName
+      commitURI <- .constructCommitURI(myRepo)
     } else{
-      if( myRepo@ref == "branch" ){
-        constructedURI <- .constructRepoRefURI(myRepo, "heads")
-        ## GET THE COMMIT
-        cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
-        myRepo@apiResponses$ref <- githubRestGET(constructedURI)
-        myRepo@commit <- myRepo@apiResponses$ref$object["sha"]
-      } else{
-        if( myRepo@ref == "tag" ){
-          constructedURI <- .constructRepoRefURI(myRepo, "tags")
-          ## GET THE COMMIT
-          cat(paste("status: getting commit information about: ", constructedURI, "\n", sep=""))
-          myRepo@apiResponses$ref <- githubRestGET(constructedURI)
-          if( myRepo@apiResponses$ref$object["type"] != "commit" ){
-            myRepo@apiResponses$ref <- githubRestGET(myRepo@apiResponses$ref$object[["url"]])
-          }
-          myRepo@commit <- myRepo@apiResponses$ref$object["sha"]
-        }
+      allRefs <- githubRestGET(sub("{/sha}", "", myRepo@apiResponses$repo$git_refs_url, fixed=T))
+      if( myRepo@ref == "tag" ){
+        myRef <- paste("refs/tags", myRepo@refName, sep="/")
+      } else if( myRepo@ref == "branch" ){
+        myRef <- paste("refs/heads", myRepo@refName, sep="/")
       }
+      ns <- sapply(allRefs, function(x){x$ref})
+      idn <- which(ns == myRef)
+      if( length(idn) == 0 ){
+        stop("This is not a valid reference for this repository")
+      }
+      cs <- sapply(allRefs, function(x){x$object['sha']})
+      myRepo@commit <- cs[idn]
+      urls <- sapply(allRefs, function(x){x$object['url']})
+      commitURI <- urls[idn]
+      cat(paste("status: getting commit information about: ", commitURI, "\n", sep=""))
+      myRepo@apiResponses$commit <- githubRestGET(commitURI)
+      
     }
+    myRepo@apiResponses$commit <- githubRestGET(commitURI)
+    
     myRepo <- .getCommitTree(myRepo)
     
     return(myRepo)

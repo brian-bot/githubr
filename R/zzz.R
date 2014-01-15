@@ -21,5 +21,5 @@ kCertBundle <- "certificateBundle/cacert.pem"
 }
 
 .userAgent <- function(){
-  return(paste("rGithubClient", packageDescription("rGithubClient", fields="Version"), sep="/"))
+  return(paste("rGithubClient", utils::packageDescription("rGithubClient", fields="Version"), sep="/"))
 }
