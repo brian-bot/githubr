@@ -38,15 +38,12 @@ setMethod(
     
     ## GRAB THE sha VALUES FROM THESE PATHS AND BUILD URLS FOR THEIR BLOBS
     theseShas <- repository@tree$sha[match(repositoryPath, repository@tree$path)]
-    constructedURIs <- .constructBlobURL(repository, theseShas)
+    constructedURLs <- .constructBlobURL(repository, theseShas)
     
-    for( uri in constructedURIs ){
+    for( url in constructedURLs ){
       rawHeader <- .getGithubCache("httpheader")
       rawHeader["Accept"] <- "application/vnd.github.raw"
-      if(substr(uri, 1, 1) == "/"){
-        uri <- substr(uri, 2, nchar(uri))
-      }
-      txt <- getURL(paste(.getGithubCache("githubEndpoint"), uri, sep=""), .opts = .getGithubCache("opts"), httpheader=rawHeader)
+      txt <- githubRestGET(url, .opts = .getGithubCache("opts"), httpheader=rawHeader)
       source(file=textConnection(txt), ...)
     }
     

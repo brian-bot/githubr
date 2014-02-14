@@ -8,9 +8,23 @@ githubRestGET <- function(uri, endpoint = .getGithubCache("githubEndpoint"), .op
   if(substr(uri, 1, 1) == "/"){
     uri <- substr(uri, 2, nchar(uri))
   }
-  
   url <- paste(endpoint, uri, sep="")
-  .getGithubJSON(url, .opts=.opts, httpheader=httpheader, ...)
+  
+  accept <- httpheader[["Accept"]]
+  
+  tryGetURL <- getURL(url, .opts=.opts,
+                      httpheader=httpheader, ...)
+  
+  ## IF THE RESPONSE IS IN JSON, CONVERT IT
+  if( grepl("json", accept) ){
+    tryGetURL <- fromJSON(tryGetURL)
+    if(is.character(tryGetURL)){
+      if(tryGetURL["message"] == "Not Found")
+        stop("github api could not find specified URI", call.=F)
+    }
+  }
+  
+  return(tryGetURL)
 }
 
 # githubRestPOST <- function(uri, endpoint = .getGithubCache("githubEndpoint"), ...){

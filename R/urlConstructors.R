@@ -4,7 +4,7 @@
 .constructBlobURL <- function(repository, shas){
   u <- sapply(repository@apiResponses$tree$tree, "[[", "url")
   s <- sapply(repository@apiResponses$tree$tree, "[[", "sha")
-  url <- u[which(s %in% shas)]
+  url <- u[ match(shas, s) ]
   return(url)
 }
 
