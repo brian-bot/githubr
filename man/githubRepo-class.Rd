@@ -21,7 +21,8 @@
     \item{\code{ref}:}{Object of class \code{"character"} along with \code{refName}: the type of reference that the repository is trying to capture: one of "branch", "tag", or "commit" }
     \item{\code{refName}:}{Object of class \code{"character"} along with \code{ref}: the name of the branch, tag, or the sha of the requested commit }
     \item{\code{commit}:}{Object of class \code{"character"} specifying the timepoint at which information on the repository was obtained }
-    \item{\code{tree}:}{Object of class \code{"data.frame"} referring to the tree structure present in the repository with columns \code{path}, \code{sha} }
+    \item{\code{tree}:}{Object of class \code{"data.frame"} referring to the tree structure present in the repository with columns \code{path}, \code{sha}, and \code{url} }
+    \item{\code{apiResponses}:}{Object of class \code{"list"} enumerating the GitHub API responses that were retrieved to build the object (used internally) }
   }
 }
 
