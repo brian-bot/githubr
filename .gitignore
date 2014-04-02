@@ -2,6 +2,6 @@ rGithubClient.Rproj
 .Rproj.user
 .Rhistory
 .RData
-demo
+./demo/
 src-*
 ..Rcheck
