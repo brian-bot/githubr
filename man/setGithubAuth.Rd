@@ -21,7 +21,7 @@
 }
 
 \value{
-  sets authorization to be used for subsequent github API calls and invisibly returns token
+  sets authorization to be used for subsequent github API calls and invisibly returns the user's token
 }
 
 \seealso{
