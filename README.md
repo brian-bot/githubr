@@ -10,7 +10,7 @@ Currently, the `rGithubClient` is not available via CRAN, but can be install dir
 ```r
 install.packages("devtools")
 require(devtools)
-install_github("rGithubClient", "brian-bot")
+install_github("brian-bot/rGithubClient")
 ```
 
 -----
@@ -61,10 +61,8 @@ view(repoHead)
 
 
 #####
-## SOURCING A FILE FROM A REPOSITORY INTO A NEW ENVIRONMENT
+## SOURCING A FILE FROM A REPOSITORY
 #####
-e <- new.env()
-sourceRepoFile(repoTag, "R/setGithubAuth.R", local=e)
-ls(e)
+sourceRepoFile(repoDev, "inst/demo/helloWorld.R")
 
 ```
