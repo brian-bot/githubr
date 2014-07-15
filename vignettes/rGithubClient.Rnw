@@ -1,4 +1,5 @@
 %\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{rGithubClient}
 # rGithubClient Vignette
 ### **AUTHOR**: _Brian M. Bot (brian.bot@sagebase.org)_
 
@@ -66,13 +67,13 @@ repoCommit
 ## Sourcing a file from a GitHub repository
 
 ```{r}
-sourceRepoFile(repoDev, "inst/demo/helloWorld.R")
+sourceRepoFile(repoDev, "inst/misc/helloWorld.R")
 ```
 
 ## Retrieving a permlink from a GitHub file
 
 ```{r}
-getPermlink(repoDev, "vignettes/rGithubClient.Rmd")
+getPermlink(repoDev, "inst/misc/helloWorld.R")
 ```
 
 
