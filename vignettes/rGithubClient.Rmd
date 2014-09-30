@@ -1,15 +1,19 @@
+<!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{rGithubClient}
+-->
 # rGithubClient Vignette
 ### **AUTHOR**: _Brian M. Bot (brian.bot@sagebase.org)_
 
-```{r, include=FALSE, eval=TRUE}
+```{r loadClient, include=FALSE, eval=TRUE}
+if( file.exists("~/.Rprofile") )
+  source("~/.Rprofile")
 require(rGithubClient)
 ```
 
 ## Overview
 
-[GitHub](https://www.github.com) has emerged as a very popular tool for collaborative code development in the software development community. The utility of source code repositories expands far beyond use in professional software development. In fact, it has been shown to be extremely useful for  number of other endeavors. The purpose of this client is to provide an interface for users of R to be able to have web-accessible access to their code directly from their R sessions.
+[GitHub](https://www.github.com) has emerged as a very popular tool for collaborative code development in the software community. The utility of source code repositories expands far beyond use in professional software development. In fact, it has been shown to be extremely useful for a number of other endeavors. The purpose of this client is to provide an interface for users of R to be able to have web-accessible access to their code directly from their R sessions.
 
 ## Setting your GitHub authorization
 
@@ -19,7 +23,7 @@ For access to private repositories and/or to have an increased limit on the numb
 
 ### via interactive authorization
 
-```{r, include=TRUE, eval=FALSE}
+```{r loadNotRun, include=TRUE, eval=FALSE}
 require(rGithubClient)
 setGithubAuth("myGithubUserName", "myGithubPassword")
 ```
@@ -27,7 +31,7 @@ setGithubAuth("myGithubUserName", "myGithubPassword")
 ### via a hook in your .Rprofile
 include the following information in your `.Rprofile` located in your root directory. As this is sensitive information, _**make sure that this file is only visible to you**_.
 
-```{r, include=FALSE, eval=FALSE}
+```{r rProfile, include=FALSE, eval=FALSE}
 setHook(
   packageEvent("rGithubClient", "attach"),
   function(...){
@@ -40,25 +44,25 @@ setHook(
 ## Getting meta-information about a GitHub repository
 
 ### from head of the master branch (default)
-```{r}
+```{r getRepoDefault}
 repo <- getRepo('brian-bot/rGithubClient')
 repo
 ```
 
 ### from a specific branch
-```{r}
+```{r getRepoBranch}
 repoDev <- getRepo('brian-bot/rGithubClient', ref='branch', refName='dev')
 repoDev
 ```
 
 ### from a specific tag
-```{r}
+```{r getRepoTag}
 repoTag <- getRepo('brian-bot/rGithubClient', ref='tag', refName='rGithubClient-0.8')
 repoTag
 ```
 
 ### from a specific commit
-```{r}
+```{r getRepoCommit}
 repoCommit <- getRepo("brian-bot/rGithubClient", ref="commit", refName="9382e7191073c1a5dc554ec8b6658d07d405b89e")
 repoCommit
 ```
@@ -66,17 +70,17 @@ repoCommit
 
 ## Sourcing a file from a GitHub repository
 
-```{r}
+```{r sourceRepoFile}
 sourceRepoFile(repoDev, "inst/misc/helloWorld.R")
 ```
 
 ## Retrieving a permlink from a GitHub file
 
-```{r}
+```{r getPermlink}
 getPermlink(repoDev, "inst/misc/helloWorld.R")
 ```
 
 
-```{r}
+```{r sessionInfo}
 sessionInfo()
 ```
