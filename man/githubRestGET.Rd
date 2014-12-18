@@ -10,7 +10,9 @@
 }
 
 \usage{
-  githubRestGET(uri, endpoint = .getGithubCache("githubEndpoint"), .opts = .getGithubCache("opts"), httpheader = .getGithubCache("httpheader"), ...)
+  githubRestGET(uri, endpoint = .getGithubCache("githubEndpoint"), 
+                .opts = .getGithubCache("opts"), 
+                httpheader = .getGithubCache("httpheader"), ...)
 }
 
 \arguments{

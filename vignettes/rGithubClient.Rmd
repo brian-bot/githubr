@@ -1,8 +1,11 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{rGithubClient}
--->
-# rGithubClient Vignette
+---
+title: "Introduction to rGithubClient"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+---
 ### **AUTHOR**: _Brian M. Bot (brian.bot@sagebase.org)_
 
 ```{r loadClient, include=FALSE, eval=TRUE}
@@ -13,25 +16,23 @@ require(rGithubClient)
 
 ## Overview
 
-[GitHub](https://www.github.com) has emerged as a very popular tool for collaborative code development in the software community. The utility of source code repositories expands far beyond use in professional software development. In fact, it has been shown to be extremely useful for a number of other endeavors. The purpose of this client is to provide an interface for users of R to be able to have web-accessible access to their code directly from their R sessions.
+[GitHub](https://www.github.com) has emerged as a very popular tool for collaborative code development in the software community. The utility of source code repositories expands far beyond use in professional software development. In fact, it has been shown to be extremely useful for a number of other endeavors. The purpose of this package is to provide an interface for users of R to have web-accessible access to their code directly within their R sessions.
 
 ## Setting your GitHub authorization
 
 Users can use the `rGithubClient` without authenticating (anonymous calls to the API), however there are limits both to what can be accessed as well as the number of API calls allowed. Please see http://developers.github.com for more information on anonymous use of the GitHub API.
 
-For access to private repositories and/or to have an increased limit on the number of API calls, users should first authenticate with the `setGithubAuth` function. This function makes a call to github authorization services and either (1) creates a new token specific to the rGithubClient (if you have never used the `rGithubClient`); or (2) retrieves the token specific to the `rGithubClient` (if already exists). This retrieved token is used for all subsequent calls to github api for the current R session. _**Using this function logs in via basic authentication and creates a new token for use specifically by the `rGithubClient`.**_
+For access to private repositories and/or to have an increased limit on the number of API calls, users should first authenticate with the `setGithubAuth` function. This function makes a call to github authorization services and either (1) creates a new token specific to the rGithubClient (if you have never used the `rGithubClient`); or (2) retrieves the token specific to the `rGithubClient` (if already exists). This retrieved token is used for all subsequent calls to github api for the current R session. **Using this function logs in via basic authentication and creates a new token for use specifically by the `rGithubClient`.**
 
-### via interactive authorization
-
+#### via interactive authorization
 ```{r loadNotRun, include=TRUE, eval=FALSE}
 require(rGithubClient)
 setGithubAuth("myGithubUserName", "myGithubPassword")
 ```
 
-### via a hook in your .Rprofile
-include the following information in your `.Rprofile` located in your root directory. As this is sensitive information, _**make sure that this file is only visible to you**_.
-
-```{r rProfile, include=FALSE, eval=FALSE}
+#### via a hook in your .Rprofile
+Include the following information in your `.Rprofile` located in your root directory. As this is sensitive information, _**make sure that this file is only visible to you**_.
+```{r rProfile, include=TRUE, eval=FALSE}
 setHook(
   packageEvent("rGithubClient", "attach"),
   function(...){
@@ -43,25 +44,25 @@ setHook(
 
 ## Getting meta-information about a GitHub repository
 
-### from head of the master branch (default)
+#### from head of the master branch (default)
 ```{r getRepoDefault}
 repo <- getRepo('brian-bot/rGithubClient')
 repo
 ```
 
-### from a specific branch
+#### from a specific branch
 ```{r getRepoBranch}
 repoDev <- getRepo('brian-bot/rGithubClient', ref='branch', refName='dev')
 repoDev
 ```
 
-### from a specific tag
+#### from a specific tag
 ```{r getRepoTag}
 repoTag <- getRepo('brian-bot/rGithubClient', ref='tag', refName='rGithubClient-0.8')
 repoTag
 ```
 
-### from a specific commit
+#### from a specific commit
 ```{r getRepoCommit}
 repoCommit <- getRepo("brian-bot/rGithubClient", ref="commit", refName="9382e7191073c1a5dc554ec8b6658d07d405b89e")
 repoCommit
@@ -80,7 +81,14 @@ sourceRepoFile(repoDev, "inst/misc/helloWorld.R")
 getPermlink(repoDev, "inst/misc/helloWorld.R")
 ```
 
+## Viewing a specific commit on GitHub
 
+```{r view, eval=FALSE}
+view(repoDev, "inst/misc/helloWorld.R")
+```
+
+
+## R sessionInfo()
 ```{r sessionInfo}
 sessionInfo()
 ```
