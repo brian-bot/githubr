@@ -1,9 +1,9 @@
 ---
-title: "Introduction to rGithubClient"
+title: "Introduction to the rGithubClient"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{rGithubClient}
   %\VignetteEngine{knitr::rmarkdown}
 ---
 ### **AUTHOR**: _Brian M. Bot (brian.bot@sagebase.org)_
@@ -18,16 +18,16 @@ require(rGithubClient)
 
 [GitHub](https://www.github.com) has emerged as a very popular tool for collaborative code development in the software community. The utility of source code repositories expands far beyond use in professional software development. In fact, it has been shown to be extremely useful for a number of other endeavors. The purpose of this package is to provide an interface for users of R to have web-accessible access to their code directly within their R sessions.
 
-## Setting your GitHub authorization
+## Setting your GitHub credentials
 
-Users can use the `rGithubClient` without authenticating (anonymous calls to the API), however there are limits both to what can be accessed as well as the number of API calls allowed. Please see http://developers.github.com for more information on anonymous use of the GitHub API.
+Users can use the `rGithubClient` without authenticating (anonymous calls to the API), however there are limits both to what can be accessed as well as the number of API calls allowed. Please see the [GitHub Developer docs](https://developers.github.com) for more information on anonymous use of the GitHub API.
 
-For access to private repositories and/or to have an increased limit on the number of API calls, users should first authenticate with the `setGithubAuth` function. This function makes a call to github authorization services and either (1) creates a new token specific to the rGithubClient (if you have never used the `rGithubClient`); or (2) retrieves the token specific to the `rGithubClient` (if already exists). This retrieved token is used for all subsequent calls to github api for the current R session. **Using this function logs in via basic authentication and creates a new token for use specifically by the `rGithubClient`.**
+For access to private repositories and/or to have an increased limit on the number of API calls, users should register a personal access token with the client via the `setGithubToken` function. Personal access tokens can be generated on your [GitHub settings page](https://github.com/settings/applications). Give your token a meaningful name, like "rGithubClient token" such that you can remember what it is being used for. Once you have called `setGithubToken`, the token passed to this function is then used for all subsequent calls to github api for the current R session.
 
 #### via interactive authorization
 ```{r loadNotRun, include=TRUE, eval=FALSE}
 require(rGithubClient)
-setGithubAuth("myGithubUserName", "myGithubPassword")
+setGithubToken("myTokenFromGithub12345678")
 ```
 
 #### via a hook in your .Rprofile
@@ -37,7 +37,7 @@ setHook(
   packageEvent("rGithubClient", "attach"),
   function(...){
     ## set my github authorization at package loading
-    setGithubAuth("myGithubUserName", "myGithubPassword")
+    setGithubToken("myTokenFromGithub12345678")
   }
 )
 ```
