@@ -5,7 +5,7 @@
 
 ##### Installing the `rGithubClient`:
 
-Currently, the `rGithubClient` is not available via CRAN, but can be install directly from GitHub using the `devtools` package:
+Currently, the `rGithubClient` is not available via CRAN, but can be installed directly from GitHub using the `devtools` package:
 
 ```r
 install.packages("devtools")
@@ -17,12 +17,12 @@ install_github("brian-bot/rGithubClient")
 
 ##### Overview
 
-purpose is to allow users to:
+The purpose is to allow users to:
 * use github as a version control system for analysis code in addition to enterprise software development
 * store code centrally for sourcing into an analysis environment
 * allow easy sharing and forking of code that may be useful for others
 
-current status:
+Current status:
 * For access to private repositories and/or to have an increased limit on the number of API calls, users should register a personal access token with the client via the `setGithubToken` function. Personal access tokens can be generated on your [GitHub settings page](https://github.com/settings/applications). Once you have called `setGithubToken`, the token passed to this function is then used for all subsequent calls to github api for the current R session.
 * currently staying away from downloading files -- sticking with meta-information and ability to directly source files
 * `sourceRepoFile` sources code into the global environment, but allows users to pass optional arguments as specified in the `base::source()` function
