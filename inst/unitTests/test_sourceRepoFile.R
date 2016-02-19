@@ -10,8 +10,8 @@ unitTestSourceRepoFile <- function(){
     sourceRepoFile(...)
   }
   
-  testSourceRepoFile(repository="brian-bot/rGithubClient", repositoryPath="R/getGithubJSON.R", ref="tag", refName="rGithubClient-0.8")
-  myRepo <- getRepo("brian-bot/rGithubClient", ref="tag", refName="rGithubClient-0.8")
+  testSourceRepoFile(repository="brian-bot/githubr", repositoryPath="R/getGithubJSON.R", ref="tag", refName="rGithubClient-0.8")
+  myRepo <- getRepo("brian-bot/githubr", ref="tag", refName="rGithubClient-0.8")
   testSourceRepoFile(repository=myRepo, repositoryPath="R/getGithubJSON.R")
   
 }

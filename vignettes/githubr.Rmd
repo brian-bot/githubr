@@ -1,9 +1,9 @@
 ---
-title: "Introduction to the rGithubClient"
+title: "Introduction to githubr"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{rGithubClient}
+  %\VignetteIndexEntry{githubr}
   %\VignetteEngine{knitr::rmarkdown}
 ---
 ### **AUTHOR**: _Brian M. Bot (brian.bot@sagebase.org)_
@@ -11,7 +11,7 @@ vignette: >
 ```{r loadClient, include=FALSE, eval=TRUE}
 if( file.exists("~/.Rprofile") )
   source("~/.Rprofile")
-require(rGithubClient)
+require(githubr)
 ```
 
 ## Overview
@@ -20,13 +20,13 @@ require(rGithubClient)
 
 ## Setting your GitHub credentials
 
-Users can use the `rGithubClient` without authenticating (anonymous calls to the API), however there are limits both to what can be accessed as well as the number of API calls allowed. Please see the [GitHub Developer docs](https://developers.github.com) for more information on anonymous use of the GitHub API.
+Users can use `githubr` without authenticating (anonymous calls to the API), however there are limits both to what can be accessed as well as the number of API calls allowed. Please see the [GitHub Developer docs](https://developers.github.com) for more information on anonymous use of the GitHub API.
 
-For access to private repositories and/or to have an increased limit on the number of API calls, users should register a personal access token with the client via the `setGithubToken` function. Personal access tokens can be generated on your [GitHub settings page](https://github.com/settings/applications). Give your token a meaningful name, like "rGithubClient token" such that you can remember what it is being used for. Once you have called `setGithubToken`, the token passed to this function is then used for all subsequent calls to github api for the current R session.
+For access to private repositories and/or to have an increased limit on the number of API calls, users should register a personal access token with the client via the `setGithubToken` function. Personal access tokens can be generated on your [GitHub settings page](https://github.com/settings/applications). Give your token a meaningful name, like "githubr token" such that you can remember what it is being used for. Once you have called `setGithubToken`, the token passed to this function is then used for all subsequent calls to github api for the current R session.
 
 #### via interactive authorization
 ```{r loadNotRun, include=TRUE, eval=FALSE}
-require(rGithubClient)
+require(githubr)
 setGithubToken("myTokenFromGithub12345678")
 ```
 
@@ -34,7 +34,7 @@ setGithubToken("myTokenFromGithub12345678")
 Include the following information in your `.Rprofile` located in your root directory. As this is sensitive information, _**make sure that this file is only visible to you**_.
 ```{r rProfile, include=TRUE, eval=FALSE}
 setHook(
-  packageEvent("rGithubClient", "attach"),
+  packageEvent("githubr", "attach"),
   function(...){
     ## set my github authorization at package loading
     setGithubToken("myTokenFromGithub12345678")
@@ -46,25 +46,19 @@ setHook(
 
 #### from head of the master branch (default)
 ```{r getRepoDefault}
-repo <- getRepo('brian-bot/rGithubClient')
+repo <- getRepo('brian-bot/githubr')
 repo
 ```
 
 #### from a specific branch
 ```{r getRepoBranch}
-repoDev <- getRepo('brian-bot/rGithubClient', ref='branch', refName='dev')
+repoDev <- getRepo('brian-bot/githubr', ref='branch', refName='dev')
 repoDev
-```
-
-#### from a specific tag
-```{r getRepoTag}
-repoTag <- getRepo('brian-bot/rGithubClient', ref='tag', refName='rGithubClient-0.8')
-repoTag
 ```
 
 #### from a specific commit
 ```{r getRepoCommit}
-repoCommit <- getRepo("brian-bot/rGithubClient", ref="commit", refName="9382e7191073c1a5dc554ec8b6658d07d405b89e")
+repoCommit <- getRepo("brian-bot/githubr", ref="commit", refName="9382e7191073c1a5dc554ec8b6658d07d405b89e")
 repoCommit
 ```
 

@@ -2,11 +2,11 @@
 #####
 
 
-.unitTests <- function(dir=system.file("unitTests", package="rGithubClient"), testFileRegexp = "^test_.*\\.R$") {
+.unitTests <- function(dir=system.file("unitTests", package="githubr"), testFileRegexp = "^test_.*\\.R$") {
   .runTestSuite(dir=dir, testFileRegexp=testFileRegexp, testFuncRegexp="^unitTest.+", suiteName="unit tests")
 }
 
-.integrationTests <- function(dir=system.file("integrationTests", package="rGithubClient"), testFileRegexp="^test_.*\\.R$"){
+.integrationTests <- function(dir=system.file("integrationTests", package="githubr"), testFileRegexp="^test_.*\\.R$"){
   .runTestSuite(dir=dir, testFileRegexp=testFileRegexp, testFuncRegexp="^integrationTest.+", suiteName="integration tests")
 }
 
@@ -26,7 +26,7 @@
   
   require("RUnit", quietly=TRUE) || stop("RUnit package not found")
   RUnit_opts <- getOption("RUnit", list())
-#   if(rGithubClient:::.getCache("debug")) {
+#   if(githubr:::.getCache("debug")) {
 #     RUnit_opts$verbose <- 10L
 #     RUnit_opts$silent <- FALSE
 #   } else {
@@ -35,7 +35,7 @@
 #   }
   RUnit_opts$verbose_fail_msg <- TRUE
   options(RUnit = RUnit_opts)
-  suite <- defineTestSuite(name=paste("rGithubClient RUnit Test Suite", suiteName),
+  suite <- defineTestSuite(name=paste("githubr RUnit Test Suite", suiteName),
                            dirs=dir,
                            testFileRegexp=testFileRegexp,
                            testFuncRegexp=testFuncRegexp,
@@ -53,7 +53,7 @@
       }
     }
     cat("\n\n")
-    stop(paste(suiteName, " tests failed for package rGithubClient"))
+    stop(paste(suiteName, " tests failed for package githubr"))
   }
   result
 }

@@ -1,16 +1,16 @@
-## rGithubClient
-##### Making it easier for R to talk to GitHub
+## githubr
+##### Making it easy to talk to GitHub from R
 
 -----
 
-##### Installing the `rGithubClient`:
+##### Installing `githubr`:
 
-Currently, the `rGithubClient` is not available via CRAN, but can be installed directly from GitHub using the `devtools` package:
+Currently, `githubr` is not available via CRAN, but can be installed directly from GitHub using the `devtools` package. A little bit meta, huh?
 
 ```r
 install.packages("devtools")
 require(devtools)
-install_github("brian-bot/rGithubClient")
+install_github("brian-bot/githubr")
 ```
 
 -----
@@ -33,7 +33,7 @@ Current status:
 
 ```r
 ## LOAD THE PACKAGE
-require(rGithubClient)
+require(githubr)
 
 ## USE TOKEN TO AUTHENTICATE FOR YOUR CURRENT SESSION
 setGithubToken("myTokenFromGithub12345678")
@@ -42,16 +42,13 @@ setGithubToken("myTokenFromGithub12345678")
 ## ACCESSING META-INFORMATION ABOUT A GITHUB REPOSITORY
 #####
 ## FOR HEAD OF MASTER BRANCH OF A GITHUB REPOSITORY
-repoHead <- getRepo('brian-bot/rGithubClient')
+repoHead <- getRepo('brian-bot/githubr')
 
 ## OR HEAD OF A SPECIFIC BRANCH (dev)
-repoBranch <- getRepo('brian-bot/rGithubClient', ref='branch', refName='dev')
-
-## OR A SPECIFIC TAG
-repoTag <- getRepo('brian-bot/rGithubClient', ref='tag', refName='rGithubClient-0.8')
+repoBranch <- getRepo('brian-bot/githubr', ref='branch', refName='dev')
 
 ## OR A SPECIFIC COMMIT
-repoCommit <- getRepo('brian-bot/rGithubClient', ref='commit', refName='d3960fdbb8b1a4ef6990d90283d6ec474e424d5d')
+repoCommit <- getRepo('brian-bot/githubr', ref='commit', refName='d3960fdbb8b1a4ef6990d90283d6ec474e424d5d')
 
 
 #####

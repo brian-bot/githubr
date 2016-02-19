@@ -1,7 +1,7 @@
 \name{view}
 \alias{view}
 
-\title{ Function \code{view} in Package \pkg{rGithubClient} }
+\title{ Function \code{view} in Package \pkg{githubr} }
 
 \description{
   \code{view} allows users to quickly and easily view github repositories (or specific files within said repository) through the default web browser

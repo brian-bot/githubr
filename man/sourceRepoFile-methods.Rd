@@ -5,7 +5,7 @@
 \alias{sourceRepoFile,character,character-method}
 \alias{sourceRepoFile,githubRepo,character-method}
 
-\title{ Methods for Function \code{sourceRepoFile} in Package \pkg{rGithubClient} }
+\title{ Methods for Function \code{sourceRepoFile} in Package \pkg{githubr} }
 
 \description{
   \describe{

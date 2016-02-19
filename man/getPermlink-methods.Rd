@@ -6,7 +6,7 @@
 \alias{getPermlink,githubRepo,missing-method}
 \alias{getPermlink,character,ANY-method}
 
-\title{ Methods for Function \code{getPermlink} in Package \pkg{rGithubClient} }
+\title{ Methods for Function \code{getPermlink} in Package \pkg{githubr} }
 
 \description{
   \code{getPermlink} allows users to quickly and easily get permlinks relative to a specific point in time for github repositories (or specific files within said repository). User has option of getting either an "html" (default) or "raw" permlink. Currently, these are constructed by the client -- once github moves to a fully hypermedia API (all resources have at least one \code{*_url} property) this will be completely handled by the API and won't need to be constructed client-side.

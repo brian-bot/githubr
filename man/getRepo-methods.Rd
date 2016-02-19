@@ -4,7 +4,7 @@
 \alias{getRepo-methods}
 \alias{getRepo,character-method}
 
-\title{ Methods for Function \code{getRepo} in Package \pkg{rGithubClient} }
+\title{ Methods for Function \code{getRepo} in Package \pkg{githubr} }
 
 \description{
   \describe{
