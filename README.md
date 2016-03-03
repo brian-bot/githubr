@@ -60,6 +60,6 @@ view(repoHead)
 #####
 ## SOURCING A FILE FROM A REPOSITORY
 #####
-sourceRepoFile(repoDev, "inst/demo/helloWorld.R")
+sourceRepoFile(repoDev, "inst/misc/helloWorld.R")
 
 ```
