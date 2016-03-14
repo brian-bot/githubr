@@ -1,6 +1,6 @@
 ## IMPORTS FROM OTHER PACKAGES
 import(methods, RCurl)
-importFrom(RJSONIO, toJSON, fromJSON)
+importFrom(rjson, toJSON, fromJSON)
 importFrom(utils, browseURL)
 
 ## EXPORT S3 FUNCTIONS

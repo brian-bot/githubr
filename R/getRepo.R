@@ -53,9 +53,9 @@ setMethod(
       if( length(idn) == 0 ){
         stop("This is not a valid reference for this repository")
       }
-      cs <- sapply(allRefs, function(x){x$object['sha']})
+      cs <- unlist(sapply(allRefs, function(x){x$object['sha']}))
       myRepo@commit <- cs[idn]
-      urls <- sapply(allRefs, function(x){x$object['url']})
+      urls <- unlist(sapply(allRefs, function(x){x$object['url']}))
       commitURI <- urls[idn]
       cat(paste("status: getting commit information about: ", commitURI, "\n", sep=""))
       myRepo@apiResponses$commit <- githubRestGET(commitURI)
