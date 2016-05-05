@@ -24,7 +24,7 @@
     } else list()
   }
   
-  require("RUnit", quietly=TRUE) || stop("RUnit package not found")
+  requireNamespace("RUnit", quietly=TRUE) || stop("RUnit package not found")
   RUnit_opts <- getOption("RUnit", list())
 #   if(githubr:::.getCache("debug")) {
 #     RUnit_opts$verbose <- 10L
@@ -35,15 +35,15 @@
 #   }
   RUnit_opts$verbose_fail_msg <- TRUE
   options(RUnit = RUnit_opts)
-  suite <- defineTestSuite(name=paste("githubr RUnit Test Suite", suiteName),
+  suite <- RUnit::defineTestSuite(name=paste("githubr RUnit Test Suite", suiteName),
                            dirs=dir,
                            testFileRegexp=testFileRegexp,
                            testFuncRegexp=testFuncRegexp,
                            rngKind="default",
                            rngNormalKind="default")
-  result <- runTestSuite(suite)
+  result <- RUnit::runTestSuite(suite)
   cat("\n\n")
-  printTextProtocol(result, showDetails=FALSE)
+  RUnit::printTextProtocol(result, showDetails=FALSE)
   if (length(details <- .failure_details(result)) >0) {
     cat("\nTest files with failing tests\n")
     for (i in seq_along(details)) {

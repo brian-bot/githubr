@@ -5,3 +5,5 @@ githubr.Rproj
 ./demo/
 src-*
 ..Rcheck
+githubr.Rproj
+.Rbuildignore~
