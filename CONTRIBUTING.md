@@ -57,3 +57,4 @@ Many people have provided invaluable feedback in the development of the rGithubC
 - Erich Huang (@erichhuang)
 - Bruce Hoff (@brucehoff)
 - Madeleine Bonsma (@mbonsma)
+- Benjamin Logsdon (@blogsdon)
