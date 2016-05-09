@@ -2,6 +2,7 @@
 ##### Making it easy to talk to GitHub from R
 
 -----
+[![Travis-CI Build Status](https://travis-ci.org/brian-bot/githubr.svg?branch=master)](https://travis-ci.org/brian-bot/githubr)
 
 ##### Installing `githubr`:
 
