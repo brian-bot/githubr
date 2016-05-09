@@ -9,9 +9,14 @@ vignette: >
 ### **AUTHOR**: _Brian M. Bot (brian.bot@sagebase.org)_
 
 ```{r loadClient, include=FALSE, eval=TRUE}
-if( file.exists("~/.Rprofile") )
+if( file.exists("~/.Rprofile") ){
   source("~/.Rprofile")
+}
 require(githubr)
+token <- Sys.getenv('GITHUBRTOKEN')
+if(token != ""){
+  setGithubToken(token)
+}
 ```
 
 ## Overview
