@@ -53,8 +53,9 @@ githubr:::.unitTests()
 ```
 
 ### Thank you section!
-Many people have provided invaluable feedback in the development of the githubr client - can't wait to add more! Here is a rolling list:
+Many people have provided invaluable feedback in the development of githubr - can't wait to add more! Here is a rolling list:
 - Erich Huang (@erichhuang)
 - Bruce Hoff (@brucehoff)
 - Madeleine Bonsma (@mbonsma)
 - Benjamin Logsdon (@blogsdon)
+- Kenneth Daily (@kdaily)
