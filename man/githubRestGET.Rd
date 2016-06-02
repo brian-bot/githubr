@@ -24,7 +24,7 @@
 }
 
 \details{
-  Defaults to recieving content in JSON format (\code{Accept="application/json"}) which is, in turn, converted into a list via the \code{rjson} function \code{fromJSON}. If authorization is set via \code{setGithubAuth}, the token specific to the githubr is used for subsequent calls to the API via this function.
+  Defaults to recieving content in JSON format (\code{Accept="application/json"}) which is, in turn, converted into a list via the \code{rjson} function \code{fromJSON}. If authorization is set via \code{setGithubToken}, the token specific to the githubr is used for subsequent calls to the API via this function.
 }
 
 \value{
