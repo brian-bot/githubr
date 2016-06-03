@@ -2,7 +2,7 @@
 Thanks for visiting the GitHub repo for `githubr`. Please feel free to use, re-use, and/or contribute to the package!
 
 ### How to report a bug or suggest an improvement
-Any and all issues can be logged using the [issue tracker associated with this repository](https://github.com/brian-bot/rGithubClient/issues). Don't worry about tagging the issue with labels or assigning it to anyone - the maintainer of the package will take care of that.
+Any and all issues can be logged using the [issue tracker associated with this repository](https://github.com/brian-bot/githubr/issues). Don't worry about tagging the issue with labels or assigning it to anyone - the maintainer of the package will take care of that.
 
 When reporting a bug, please provide as much information as possible, including:
 - the code that produced the error
@@ -35,22 +35,11 @@ Suggestions:
 - re-use building blocks in the package, such as `githubRestGET()`
 
 ### How to test the client
-The RUnit package is used for developing tests. The testing framework is located [here](R/test_githubr.R) and while the actual tests can be found in the [unitTests directory](inst/unitTests). Additional tests should be added to this directory with the file following this regular expression: `^test_.*\\.R$` and the functions inside those files following this regular expression `^unitTest.+`. 
+The `testthat` package is used for developing tests. A test file lives in tests/testthat/. Its name must start with test and follows [these guidelines](http://r-pkgs.had.co.nz/tests.html).
 
-To run all of the unit tests, build and install the package with any changes you have made:
+All of the tests will be run as part of `R CMD check`, or can be run interactively using `devtools::test()`.
 
-```r
-R CMD BUILD githubr
-R CMD INSTALL githubr_<version>.tar.gz
-```
-
-and then run the following commands in R:
-
-```r
-require(githubr)
-setGithubToken("myTokenFromGithub12345678")
-githubr:::.unitTests()
-```
+For integration tests which require a GitHub token for authentication, include the function `checkGithubToken()` at the beginnings of each `test_that()` call. This will skip these tests if no token has been provided.
 
 ### Thank you section!
 Many people have provided invaluable feedback in the development of githubr - can't wait to add more! Here is a rolling list:
