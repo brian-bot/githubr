@@ -9,7 +9,7 @@ if(token != ""){
 
 ## FOR USE IN TESTS
 checkGithubToken <- function(){
-  if(!.inGithubCache("Authorization")){
+  if(!githubr:::.inGithubCache("Authorization")){
     skip("No GitHub Authorization present - will not run integration tests")
   }
 }
