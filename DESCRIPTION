@@ -5,8 +5,8 @@ Version: 0.2
 Date: 2016-06-02
 Author: Brian M. Bot
 Maintainer: Brian M. Bot <brian.bot@sagebase.org>
-Imports: methods,utils,RCurl,rjson
-Suggests: testthat,rmarkdown,knitr
+Imports: testthat,methods,utils,RCurl,rjson
+Suggests: rmarkdown,knitr
 VignetteBuilder: knitr
 Description: Making it easy to talk to GitHub from R.
 License: GPL-3

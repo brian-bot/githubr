@@ -2,6 +2,7 @@
 import(methods, RCurl)
 importFrom(rjson, toJSON, fromJSON)
 importFrom(utils, browseURL)
+importFrom(testthat, skip)
 
 ## EXPORT S3 FUNCTIONS
 export(
