@@ -18,7 +18,7 @@ githubRestGET <- function(uri, endpoint = .getGithubCache("githubEndpoint"), .op
   ## IF THE RESPONSE IS IN JSON, CONVERT IT
   if( grepl("json", accept) ){
     tryGetURL <- fromJSON(tryGetURL)
-    if(is.character(tryGetURL)){
+    if(any(names((tryGetURL)) == "message")){
       if(tryGetURL["message"] == "Not Found")
         stop("github api could not find specified URI", call.=F)
     }
