@@ -2,4 +2,4 @@
 ^.*\.Rproj$
 CONTRIBUTING.md
 LICENSE.txt
-
+.travis.yml
