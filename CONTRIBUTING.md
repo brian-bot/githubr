@@ -20,7 +20,7 @@ When suggesting an improvement, please provide as much context as to _why_ the i
  5. Make sure the package builds and installs successfully
  6. Make sure the test suite passes (instructions below)
  7. Submit a pull request
- 8. Do a celebratory dance!
+ 8. Do a fantastic celebratory dance!
  
 ![Dance!](http://49.media.tumblr.com/43da2f03dbb1f790d92d4c96578ed797/tumblr_n08mcqTOgW1qm7cjco1_250.gif)
 
