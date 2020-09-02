@@ -2,8 +2,13 @@
 #####
 
 .constructBlobURL <- function(repository, shas){
+  tt <- sapply(repository@apiResponses$tree$tree, "[[", "type")
   u <- sapply(repository@apiResponses$tree$tree, "[[", "url")
   s <- sapply(repository@apiResponses$tree$tree, "[[", "sha")
+  ttype <- tt[ match(shas, s) ]
+  if( any(ttype == "submodule") ){
+    stop("githubr does not support submodules")
+  }
   url <- u[ match(shas, s) ]
   return(url)
 }
