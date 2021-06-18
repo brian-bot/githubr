@@ -10,7 +10,7 @@ setGithubToken <- function(token){
   getUser <- githubRestGET("/user", httpheader=header)
   if( is.character(getUser) ){
     if( "Bad credentials" %in% getUser )
-      stop("token not recognized by github - check the token or generate a new personal access token here: https://github.com/settings/applications")
+      stop("token not recognized by github - check the token or generate a new personal access token here: https://github.com/settings/tokens")
   }
   
   ## IF PASS CHECK, THEN SET IN CACHE FOR FUTURE CALLS
